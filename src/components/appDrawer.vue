@@ -24,7 +24,7 @@
                         </router-link>
                     </li>
                     <li>
-                        <router-link to="/dashboard/inbox">
+                        <router-link to="/dashboard/my-office">
                         <ion-icon name="mail-unread"></ion-icon>
                         <span class="ml-3">
                             My Office
@@ -63,11 +63,22 @@
                         </span>
                         </router-link>
                     </li>
-                    <!-- <li>
+                    <li>
+                        <a class="text-secondary" href="javascript:void(0)">Account</a>
+                    </li>
+                    <li>
                         <router-link to="/dashboard/profile">
                         <ion-icon name="person"></ion-icon>
                         <span class="ml-3">
                             Profile
+                        </span>
+                        </router-link>
+                    </li>
+                    <li>
+                        <router-link to="/dashboard/profile">
+                        <ion-icon name="settings"></ion-icon>
+                        <span class="ml-3">
+                            Settings
                         </span>
                         </router-link>
                     </li>
@@ -78,7 +89,7 @@
                             Logout
                         </span>
                         </router-link>
-                    </li> -->
+                    </li>
                 </ul>
             </div>
         </div>

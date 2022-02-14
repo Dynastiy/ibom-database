@@ -20,7 +20,10 @@ html {
     --faded-background: #2D2A28;
     --accent-color: #FF7200;
     --dark: #000;
+    --black1: #28201A;
+    --black2: #403933;
     --inactive-text: #E0DEDF;
+    --inactive-text2: #8B8B8B;
     --accent-text-color: #EDECED;
     --description-color: #F2F1F1;
     --heading-text-color: #F6F6F6;
@@ -46,6 +49,18 @@ table td {
 .table td,
 .table th {
     vertical-align: middle;
+}
+
+.bread-crumb {
+    color: var(--inactive-text2);
+}
+
+.breadcrumb__line {
+    background-color: var(--dark-background);
+}
+
+p {
+    margin: 0;
 }
 
 
@@ -134,21 +149,22 @@ table td {
 }
 
 .app-drawer-menu {
-    margin-top: 3rem;
+    margin-top: 2rem;
 }
 
 .app-drawer-menu a {
     color: var(--accent-text-color);
     display: block;
-    padding: 0.7rem;
-    margin-bottom: 0.6rem;
+    padding: 0.7rem 0.7rem 0.3rem 0.3rem;
+    /* margin-bottom: 0.6rem; */
+    text-transform: uppercase;
     border-radius: 10px;
-    font-size: 14px;
+    font-size: 12px;
     position: relative;
 }
 
 .app-drawer-menu a:hover {
-    background-color: var(--secondary-color2);
+    color: var(--secondary-color2);
     text-decoration: none;
     transition: all 0.6s;
     -webkit-transition: all 0.6s;
@@ -156,7 +172,7 @@ table td {
 }
 
 .app-drawer-menu li .router-link-exact-active {
-    background-color: var(--accent-color);
+    color: var(--accent-color);
     transition: all 0.6s;
     -webkit-transition: all 0.6s;
     -o-transition: all 0.6s;
@@ -309,7 +325,7 @@ table td {
 }
 
 .more__icon ion-icon {
-    font-size: 16px !important;
+    font-size: 16px;
     color: var(--accent-text-color);
 }
 
@@ -333,4 +349,136 @@ table td {
 .staff-container .user__table .dropdown-menu a:hover {
     background-color: var(--accent-color);
     cursor: pointer;
+}
+
+
+/* My Office Style  */
+
+.my-office-sidemenu {
+    /* background-color: var(--accent-text-color); */
+    height: 100vh;
+    width: 30rem;
+    color: var(--accent-text-color);
+    border-right: 4px solid var(--black2);
+}
+
+.my-office-content {
+    /* background-color: var(--accent-text-color); */
+    height: 100vh;
+    width: 100%;
+}
+
+.my-office-page {
+    display: flex;
+    align-items: center;
+    grid-gap: 20px;
+}
+
+.my-office-sidemenu img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.my-office-sidemenu .content {
+    padding-right: 2rem;
+    display: flex;
+    gap: 20px;
+}
+
+.unread {
+    height: 8px;
+    width: 8px;
+    background-color: #ff0000;
+    border-radius: 50%;
+}
+
+.my-office-sidemenu h6 {
+    color: var(--heading-text-color);
+}
+
+.my-office-sidemenu .description {
+    font-size: 0.7rem;
+    color: var(--description-color)
+}
+
+.my-office-sidemenu .time__stamp {
+    color: var(--inactive-text2);
+    font-size: 0.7rem;
+}
+
+.my-office-sidemenu .main__text {
+    color: var(--inactive-text2);
+    font-size: 0.8rem;
+    margin-top: 0.6rem;
+}
+
+hr {
+    background-color: var(--black2) !important;
+}
+
+.my-office-top ion-icon {
+    color: var(--inactive-text2);
+    font-size: 20px;
+    margin-bottom: 0.3rem;
+    margin-right: 1rem;
+}
+
+.my-office-top-right hr {
+    margin: 0 !important;
+}
+
+.my-office-top .btn-group ion-icon {
+    font-size: 20px;
+}
+
+.my-office-top .dropdown-item {
+    font-size: 0.8rem;
+    padding: 0.1rem 0.5rem;
+}
+
+.my-office-top .dropdown-menu {
+    border-radius: 0;
+}
+
+.my-office-top .dropdown-menu a:hover {
+    background-color: var(--accent-color);
+    cursor: pointer;
+}
+
+.my-office img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.my-office .content {
+    padding-right: 2rem;
+    display: flex;
+    gap: 20px;
+}
+
+.my-office h6 {
+    color: var(--heading-text-color);
+}
+
+.my-office .description {
+    font-size: 0.7rem;
+    color: var(--inactive-text2)
+}
+
+.my-office .time__stamp {
+    color: var(--inactive-text2);
+    font-size: 0.7rem;
+}
+
+.my-office .main__text {
+    color: var(--inactive-text2);
+    font-size: 0.8rem;
+    margin-top: 0.6rem;
+}
+
+.my-office h5 {
+    color: var(--accent-text-color);
+    font-size: 1rem;
 }
