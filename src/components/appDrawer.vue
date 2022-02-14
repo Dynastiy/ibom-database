@@ -59,11 +59,11 @@
                          <router-link to="/dashboard/chat">
                         <ion-icon name="chatboxes"></ion-icon>
                         <span class="ml-3">
-                           Chat
+                           Meeting Room
                         </span>
                         </router-link>
                     </li>
-                    <li>
+                    <!-- <li>
                         <router-link to="/dashboard/profile">
                         <ion-icon name="person"></ion-icon>
                         <span class="ml-3">
@@ -78,7 +78,7 @@
                             Logout
                         </span>
                         </router-link>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
