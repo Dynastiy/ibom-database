@@ -20,6 +20,7 @@ html {
     --faded-background: #2D2A28;
     --accent-color: #FF7200;
     --dark: #000;
+    --nav-color: #3B2B1E;
     --black1: #28201A;
     --black2: #403933;
     --inactive-text: #E0DEDF;
@@ -141,7 +142,7 @@ p {
 
 #app-drawer {
     width: 230px;
-    background-color: var(--dark-background);
+    background-color: var(--nav-color);
     color: var(--accent-text-color);
     position: fixed;
     min-height: 100vh;
@@ -201,7 +202,7 @@ p {
 }
 
 .input-field {
-    background-color: var(--dark-background);
+    background-color: var(--black1);
     width: max-content;
     padding: 0.5rem;
     border-radius: 30px;
@@ -211,7 +212,7 @@ p {
 
 .input-field ion-icon {
     font-size: 24px;
-    color: var(--faded-background);
+    color: var(--inactive-text2);
 }
 
 .input-field input {
@@ -224,7 +225,7 @@ p {
 }
 
 .input-field input::placeholder {
-    color: var(--faded-background);
+    color: var(--inactive-text2);
     font-size: 12px;
 }
 
@@ -278,7 +279,7 @@ p {
     transition: all 0.6s;
     -webkit-transition: all 0.6s;
     -o-transition: all 0.6s;
-    background-color: var(--faded-background);
+    background-color: var(--dark-background);
     min-height: 100vh;
     padding: 2rem;
 }
