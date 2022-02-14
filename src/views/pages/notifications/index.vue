@@ -1,8 +1,64 @@
 <template>
+  <div>
     <div>
-        <div>
-            <h1 class="text-white">All Notifications</h1>
-            
+      <h1 class="text-white">All Notifications</h1>
+      <div class="notifications_wrap text-white d-flex">
+        <div class="img_wrap">
+          <img src="@/assets/male_avatar.png" alt="male avatar" />
         </div>
+        <div class="text_wrap mx-3">
+          <h6>John Doe <span>Created a new task</span></h6>
+          <p>
+            Pay attention to the general course, Please do not duplicate
+            material in the lessons
+          </p>
+          <div class="d-flex official_post_wrap align-items-center">
+            <h5 class="marketing_bg">Marketing Guidelines</h5>
+            <div class="span_wrap mx-2">
+              <span>New</span>
+            </div>
+          </div>
+          <i>Now</i>
+        </div>
+      </div>
+      <div class="notifications_wrap text-white d-flex">
+        <div class="img_wrap">
+          <img src="@/assets/male_avatar.png" alt="male avatar" />
+        </div>
+        <div class="text_wrap mx-3">
+          <h6>John Doe <span>Created a new task</span></h6>
+          <p>
+            Pay attention to the general course, Please do not duplicate
+            material in the lessons
+          </p>
+          <div class="d-flex official_post_wrap align-items-center">
+            <h5 class="master_bg">Master of Marketing</h5>
+            <div class="span_wrap mx-2">
+              <span>Backing</span>
+            </div>
+          </div>
+          <i>5 minutes ago</i>
+        </div>
+      </div>
+      <div class="notifications_wrap text-white d-flex">
+        <div class="img_wrap">
+          <img src="@/assets/male_avatar.png" alt="male avatar" />
+        </div>
+        <div class="text_wrap mx-3">
+          <h6>John Doe <span>Created a new task</span></h6>
+          <p>
+            Pay attention to the general course, Please do not duplicate
+            material in the lessons
+          </p>
+          <div class="d-flex official_post_wrap align-items-center">
+            <h5 class="call_center_bg">Call Centers</h5>
+            <div class="span_wrap mx-2">
+              <span>In Progress</span>
+            </div>
+          </div>
+          <i>10 minutes ago</i>
+        </div>
+      </div>
     </div>
+  </div>
 </template>
