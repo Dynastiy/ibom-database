@@ -334,3 +334,78 @@ table td {
     background-color: var(--accent-color);
     cursor: pointer;
 }
+
+/* Compose Messages */
+.message_wrap {
+    width: 60%;
+}
+
+.message_wrap .form-group .d-flex {
+    border-bottom: 1px solid var(--inactive-text);
+}
+.message_wrap .form-group .d-flex p {
+    color: var(--light);
+    padding-top: 7px;
+}
+.message_wrap .form-group .d-flex input {
+    border: none;
+    box-shadow: none;
+    color: var(--light);
+    background-color: var(--faded-background);
+}
+.message_wrap .form-group textarea {
+    border: 1px solid var(--inactive-text);
+    background-color: var(--faded-background);
+    box-shadow: none;
+}
+
+/* Notification Page */
+
+.notifications_wrap {
+    margin-top: 30px;
+}
+
+.notifications_wrap .img_wrap img {
+    width: 40px;
+}
+.notifications_wrap .text_wrap h6 {
+    font-size: 15px;
+    font-weight: 600;
+}
+.notifications_wrap span {
+    font-size: 11px;
+}
+.notifications_wrap .text_wrap p {
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+.notifications_wrap .text_wrap h5 {
+    font-size: 10px;
+    background-color: var(--accent-text-color);
+    color: var(--light);
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+.notifications_wrap .text_wrap i {
+    font-size: 10px;
+}
+.notifications_wrap .text_wrap .official_post_wrap span {
+    font-size: 10px;
+    background-color: var(--accent-text-color);
+    color: var(--faded-background);
+    padding: 1px 5px;
+    border-radius: 3px;
+}
+.span_wrap {
+    margin-top: -10px;
+}
+.call_center_bg {
+    background-color: var(--primary-color1) !important;
+    
+}
+.master_bg {
+    background-color: var(--secondary-color1) !important;
+}
+.marketing_bg {
+    color: var(--dark) !important;
+}
