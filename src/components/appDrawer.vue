@@ -19,7 +19,7 @@
                         <router-link to="/dashboard/send-message">
                         <ion-icon name="send"></ion-icon>
                         <span class="ml-3">
-                            Send Message
+                            Create Doc
                         </span>
                         </router-link>
                     </li>
@@ -27,7 +27,7 @@
                         <router-link to="/dashboard/inbox">
                         <ion-icon name="mail-unread"></ion-icon>
                         <span class="ml-3">
-                            Inbox
+                            My Office
                         </span>
                         </router-link>
                     </li>
@@ -36,6 +36,14 @@
                         <ion-icon name="people"></ion-icon>
                         <span class="ml-3">
                             Staffs
+                        </span>
+                        </router-link>
+                    </li>
+                    <li>
+                        <router-link to="/dashboard/staffs">
+                        <ion-icon name="people"></ion-icon>
+                        <span class="ml-3">
+                            Departments
                         </span>
                         </router-link>
                     </li>
