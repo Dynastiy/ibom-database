@@ -5,7 +5,6 @@
         <img src="@/assets/logo.png" width="90" alt="" />
       </div>
 
-<<<<<<< HEAD
             <div>
                 <ul class="list-unstyled app-drawer-menu">
                     <li>
@@ -94,7 +93,6 @@
                 </ul>
             </div>
         </div>
-=======
       <div>
         <ul class="list-unstyled app-drawer-menu">
           <li>
@@ -168,7 +166,5 @@
           </li>
         </ul>
       </div>
->>>>>>> a9ef3890f4d3b7a61894bd40359fd638b9034ee9
     </div>
-  </div>
 </template>

@@ -368,7 +368,7 @@ p {
     cursor: pointer;
 }
 
-<<<<<<< HEAD=======.user_onboarding_wrap h5 {
+.user_onboarding_wrap h5 {
     color: var(--heading-text-color);
 }
 
@@ -393,7 +393,7 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
->>>>>>>a9ef3890f4d3b7a61894bd40359fd638b9034ee9
+
 /* Compose Messages */
 
 .message_wrap {
@@ -711,8 +711,6 @@ hr {
 .department__button .btn-link {
     text-decoration: none;
 }
-
-.department__button .btn-link {}
 
 
 /* All Staffs */
