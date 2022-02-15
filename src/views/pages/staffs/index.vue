@@ -10,70 +10,120 @@
     </div>
     <div class="staff-container">
       <div class="add-staff d-flex justify-content-end">
-        <button>Add Staff <span class="ml-2"><ion-icon name="person-add"></ion-icon></span></button>
+        <router-link class="route_link" to="/dashboard/staffs/add-staff">
+          <button>
+            Add Staff
+            <span class="ml-2"
+              ><ion-icon name="person-add"></ion-icon
+            ></span></button
+        ></router-link>
       </div>
 
       <!-- Table for Staff List -->
       <div class="row mt-4 user__table">
-      <div class="col-lg-12">
-            <!-- <h4 class="font-weight-bold mb-4">{{ currentRouteName }}  Users</h4> -->
-            <div class="table-responsive">
-              <table class="table table-centered table-nowrap mb-0">
-                <thead class="thead-light">
-                  <tr>
-                    <th></th>
-                    <th>Staff Reference</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Portfolio</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  
-                  <tr>
-                    <td>
-                     <img/>
-                    </td>
-                    <td>
-                      FMW/2002/1232/A12
-                    </td>
-                    <td class="text-capitalize">
-                      Emmanuel Michael
-                    </td>
-                    <td>
-                      emmanuel77michael@gmail.com
-                    </td>
-                    <td>
+        <div class="col-lg-12">
+          <!-- <h4 class="font-weight-bold mb-4">{{ currentRouteName }}  Users</h4> -->
+          <div class="table-responsive">
+            <table class="table table-centered table-nowrap mb-0">
+              <thead class="thead-light">
+                <tr>
+                  <th>Name</th>
+                  <th>Staff ID</th>
+                  <th>Role</th>
+                  <th>Department</th>
+                  <th>Permissions</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <div class="name_wrap">
+                        <img src="@/assets/male_avatar.png" />
+                      </div>
+                      <span class="ml-2">Emmanuel Michael</span>
+                    </div>
+                  </td>
+                  <td>FMW/2002/1232/A12</td>
+                  <td class="text-capitalize">Manager</td>
+                  <td>Finance</td>
+                  <!-- <td>
                       Finance Officer
-                    </td>
-                    <td>
-                     <button class="view-more-button">
-                       View More
-                     </button>
-                     <!-- Default button -->
-                    <div class="btn-group dropleft ml-2">
-                      <button type="button" class="more__icon" data-toggle="dropdown" aria-expanded="false">
+                    </td> -->
+                  <td>
+                    <div class="dropdown select">
+                      <button
+                        class="dropdown-toggle"
+                        type="button"
+                        id="dropdownMenuButton"
+                        data-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        Select
+                      </button>
+                      <div
+                        class="dropdown-menu"
+                        aria-labelledby="dropdownMenuButton"
+                      >
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#"
+                          >Something else here</a
+                        >
+                      </div>
+                    </div>
+                    <!-- <div class="btn-group dropright ml-2">
+                      <button
+                        type="button"
+                        class="more__icon select_btn text-white"
+                        data-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        
+                        Select
+                      </button>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Activate</a>
+                        <a class="dropdown-item" href="#">De-activate</a>
+                        
+                        <a class="dropdown-item" href="#">Edit</a>
+                        
+                      </div>
+                    </div> -->
+                    <!-- <button class="view-more-button">
+                       Select
+                     </button> -->
+
+                    <!-- Default button -->
+                  </td>
+                  <td>
+                    <div class="btn-group dropleft">
+                      <button
+                        type="button"
+                        class="more__icon"
+                        data-toggle="dropdown"
+                        aria-expanded="false"
+                      >
                         <!-- Dropleft -->
                         <ion-icon name="more"></ion-icon>
                       </button>
                       <div class="dropdown-menu">
-                        
-                        <a class="dropdown-item"  href="#" >Activate</a>
-                         <a class="dropdown-item" href="#">Suspend</a>
+                        <a class="dropdown-item" href="#">Activate</a>
+                        <a class="dropdown-item" href="#">De-activate</a>
                         <!-- <div class="dropdown-divider"></div> -->
-                        <a class="dropdown-item" href="#">Ban</a>
+                        <a class="dropdown-item" href="#">Edit</a>
                         <!-- <div class="dropdown-divider"></div> -->
                       </div>
                     </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <!-- end table-responsive -->
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
+          <!-- end table-responsive -->
         </div>
+      </div>
     </div>
   </div>
 </template>
