@@ -40,23 +40,23 @@
                         </router-link>
                     </li>
                     <li>
-                        <router-link to="/dashboard/staffs">
+                        <router-link to="/dashboard/departments">
                         <ion-icon name="people"></ion-icon>
                         <span class="ml-3">
                             Departments
                         </span>
                         </router-link>
                     </li>
-                    <li>
+                    <!-- <li>
                         <router-link to="/dashboard/notifications">
                         <ion-icon name="notifications"></ion-icon>
                         <span class="ml-3">
                             Notifications
                         </span>
                         </router-link>
-                    </li>
+                    </li> -->
                     <li>
-                         <router-link to="/dashboard/chat">
+                         <router-link to="/dashboard/meeting-room">
                         <ion-icon name="chatboxes"></ion-icon>
                         <span class="ml-3">
                            Meeting Room

@@ -36,6 +36,15 @@ const routes = [{
                     import ( /* webpackChunkName: "about" */ '../views/pages/messages/compose.vue')
             },
             {
+                path: '/dashboard/departments',
+                name: 'Departments',
+                // route level code-splitting
+                // this generates a separate chunk (about.[hash].js) for this route
+                // which is lazy-loaded when the route is visited.
+                component: () =>
+                    import ( /* webpackChunkName: "about" */ '../views/pages/departments/index.vue')
+            },
+            {
                 path: '/dashboard/my-office',
                 name: 'All Messages',
                 // route level code-splitting
@@ -64,17 +73,8 @@ const routes = [{
                 ]
             },
             {
-                path: '/dashboard/notifications',
-                name: 'All Notifications',
-                // route level code-splitting
-                // this generates a separate chunk (about.[hash].js) for this route
-                // which is lazy-loaded when the route is visited.
-                component: () =>
-                    import ( /* webpackChunkName: "about" */ '../views/pages/notifications/index.vue')
-            },
-            {
-                path: '/dashboard/chat',
-                name: 'Chat',
+                path: '/dashboard/meeting-room',
+                name: 'Meeting Room',
                 // route level code-splitting
                 // this generates a separate chunk (about.[hash].js) for this route
                 // which is lazy-loaded when the route is visited.

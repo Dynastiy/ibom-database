@@ -19,6 +19,7 @@ html {
     --dark-background: #100700;
     --faded-background: #2D2A28;
     --accent-color: #FF7200;
+    --accent-color-transparent: #ff730038;
     --dark: #000;
     --nav-color: #3B2B1E;
     --black1: #28201A;
@@ -192,6 +193,12 @@ p {
     -o-transition: all 0.6s;
 }
 
+#notifications .dropdown-menu {
+    padding: 1rem;
+    min-width: 30rem !important;
+    border-radius: 0;
+}
+
 
 /* App HEader styles */
 
@@ -238,7 +245,7 @@ p {
     color: var(--accent-text-color);
 }
 
-#right-side span {
+#right-side .user-details {
     color: var(--accent-text-color);
     font-size: 12px;
 }
@@ -351,79 +358,170 @@ p {
     background-color: var(--accent-color);
     cursor: pointer;
 }
+
+
 /* Compose Messages */
+
 .message_wrap {
-    width: 60%;
+    margin-top: 3rem;
 }
 
-.message_wrap .form-group .d-flex {
-    border-bottom: 1px solid var(--inactive-text);
+.message_wrap .vue-tags-input[data-v-61d92e31] {
+    max-width: unset;
+    width: 100%;
+    color: var(--accent-text-color);
+    background-color: transparent;
 }
-.message_wrap .form-group .d-flex p {
-    color: var(--light);
-    padding-top: 7px;
+
+.message_wrap .ti-input[data-v-61d92e31] {
+    border: 0;
+    border-bottom: 1px solid var(--black2);
 }
+
+.message_wrap .ti-tag .ti-content[data-v-61d92e31] {
+    color: var(--accent-text-color);
+}
+
+.message_wrap .ti-new-tag-input-wrapper input[data-v-61d92e31] {
+    background-color: transparent;
+    color: var(--accent-text-color);
+}
+
+.message_wrap .ti-tag[data-v-61d92e31] {
+    background: var(--accent-color);
+}
+
+.message_wrap .sender__to {
+    color: var(--inactive-text2);
+    /* padding-top: 7px; */
+    background-color: var(--black2);
+    padding: 0 2rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .message_wrap .form-group .d-flex input {
-    border: none;
+    /* border: none; */
     box-shadow: none;
     color: var(--light);
-    background-color: var(--faded-background);
+    background-color: transparent;
+    border-radius: 0;
+    border: 0;
+    border-bottom: 1px solid var(--black2);
 }
+
 .message_wrap .form-group textarea {
-    border: 1px solid var(--inactive-text);
-    background-color: var(--faded-background);
+    border: 1px solid var(--black2);
+    background-color: var(--black1);
     box-shadow: none;
 }
+
+.center {
+    height: 100%;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+
+.form-input input {
+    display: none;
+}
+
+.form-input label {
+    display: block;
+    padding: 0.5rem 1rem;
+    /* margin-top: 2rem; */
+    /* margin-bottom: 2rem; */
+    text-align: center;
+    background: var(--accent-color);
+    color: #fff !important;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.message_wrap button {
+    padding: 0.5rem 1rem;
+    background: var(--accent-color);
+    color: #fff !important;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+.form-input img {
+    width: 50%;
+    display: none;
+    margin-bottom: 20px;
+}
+
 
 /* Notification Page */
 
 .notifications_wrap {
-    margin-top: 30px;
+    margin-bottom: 15px;
 }
 
 .notifications_wrap .img_wrap img {
     width: 40px;
 }
+
 .notifications_wrap .text_wrap h6 {
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 600;
 }
+
 .notifications_wrap span {
-    font-size: 11px;
+    font-size: 8px;
+    color: var(--faded-background);
 }
+
 .notifications_wrap .text_wrap p {
     font-size: 12px;
-    letter-spacing: 1px;
 }
+
 .notifications_wrap .text_wrap h5 {
     font-size: 10px;
     background-color: var(--accent-text-color);
-    color: var(--light);
+    /* color: var(--light); */
     padding: 2px 5px;
     border-radius: 3px;
 }
+
 .notifications_wrap .text_wrap i {
     font-size: 10px;
 }
+
 .notifications_wrap .text_wrap .official_post_wrap span {
     font-size: 10px;
     background-color: var(--accent-text-color);
-    color: var(--faded-background);
+    color: var(--accent-color);
     padding: 1px 5px;
     border-radius: 3px;
 }
+
 .span_wrap {
     margin-top: -10px;
 }
+
 .call_center_bg {
     background-color: var(--primary-color1) !important;
-    
 }
+
 .master_bg {
     background-color: var(--secondary-color1) !important;
 }
+
 .marketing_bg {
     color: var(--dark) !important;
+}
+
 
 /* My Office Style  */
 
@@ -555,3 +653,29 @@ hr {
     color: var(--accent-text-color);
     font-size: 1rem;
 }
+
+
+/* Departments Page  */
+
+.department .card {
+    background-color: var(--black1);
+    color: var(--accent-text-color);
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.department span {
+    color: var(--description-color);
+}
+
+.department__button {
+    background: none;
+    border: 0;
+    font-size: 14px;
+}
+
+.department__button .btn-link {
+    text-decoration: none;
+}
+
+.department__button .btn-link {}
