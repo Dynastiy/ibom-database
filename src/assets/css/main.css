@@ -5,6 +5,7 @@ html {
     margin: 0;
     box-sizing: border-box;
     font-family: var(--primary-font);
+    text-decoration: none !important;
 }
 
 :root {
@@ -42,14 +43,15 @@ table td {
 }
 
 .table .thead-light th {
-    background-color: var(--inactive-text);
-    border-color: var(--dark);
-    color: var(--dark);
+    background-color: var(--dark-background);
+    border: none;  
+    color: var(--light);
 }
 
 .table td,
 .table th {
     vertical-align: middle;
+    background-color: var(--black2);
 }
 
 .bread-crumb {
@@ -309,7 +311,13 @@ p {
     justify-content: space-evenly;
     border: 1px solid var(--accent-color);
     letter-spacing: 1.2px;
+    border-radius: 20px;
+    
 }
+
+/* .route_link {
+    text-decoration: none;
+} */
 
 .add-staff button:hover {
     background-color: transparent;
@@ -318,16 +326,20 @@ p {
     -webkit-transition: all 0.6s;
     -o-transition: all 0.6s;
     color: var(--accent-color);
+    
 }
+
 
 .more__icon {
     background: transparent !important;
     border: none;
+    
 }
 
 .more__icon ion-icon {
     font-size: 16px;
     color: var(--accent-text-color);
+    margin-top: 5px;
 }
 
 .view-more-button {
@@ -351,6 +363,30 @@ p {
     background-color: var(--accent-color);
     cursor: pointer;
 }
+
+.user_onboarding_wrap h5 {
+    color: var(--heading-text-color);
+} 
+
+.user_onboarding_wrap .form-group label {
+color: var(--accent-text-color);
+font-size: 13px;
+}
+.user_onboarding_wrap .form-group .form-control {
+    background-color: var(--black1);
+    border-radius: 50px;
+    border-color: var(--black2);
+    font-size: 13px;
+    height: calc(3em + 0.75rem + 2px);
+    padding: 10px 20px;
+    box-shadow: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 /* Compose Messages */
 .message_wrap {
     width: 60%;
@@ -424,7 +460,7 @@ p {
 }
 .marketing_bg {
     color: var(--dark) !important;
-
+}
 /* My Office Style  */
 
 .my-office-sidemenu {
@@ -554,4 +590,17 @@ hr {
 .my-office h5 {
     color: var(--accent-text-color);
     font-size: 1rem;
+}
+
+/* All Staffs */
+
+.name_wrap img {
+width: 25px;
+}
+.select .dropdown-toggle {
+    white-space: nowrap;
+    background-color: transparent;
+    color: white;
+    outline: none;
+    border: none;
 }
