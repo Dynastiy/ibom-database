@@ -9,6 +9,8 @@ import './assets/css/media-queries.css'
 
 Axios.defaults.headers.common['Authorization'] = `Bearer ${store.state.token}`;
 
+import helper from '@/helpers/index.js'
+
 Vue.config.ignoredElements = [/^ion-/]
 
 Vue.config.productionTip = false
@@ -16,5 +18,6 @@ Vue.config.productionTip = false
 new Vue({
     router,
     store,
+    helper,
     render: h => h(App)
 }).$mount('#app')

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div id="dashboard-page">
-            <p>Good {{greeting}}, <span class="username">John Doe</span></p>
+            <p>Good {{greeting}}, <span class="username"> {{ username }} </span></p>
             <h1 class="text-white">Welcome to Work</h1>
             <p class="text-white small">We hope you have a beautiful day  today</p>
         </div>
@@ -13,7 +13,8 @@
 export default {
     data(){
         return{
-            greeting: ''
+            greeting: '',
+            username: ''
         }
     },
     mounted() {
@@ -28,6 +29,11 @@ export default {
         else{
             this.greeting = "Evening"
         }
+    },
+    created(){
+        const user = this.$store.getters.getUser
+        console.log(user);
+        this.username = user.name
     }
 }
 </script>

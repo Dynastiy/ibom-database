@@ -11,8 +11,8 @@
         </p>
         <form action="" @submit.prevent="login">
           <div class="mt-4">
-            <label for="">Staff ID</label> <br />
-            <input type="text" name="" id="" v-model="email" />
+            <label for="">Email</label> <br />
+            <input type="email" name="" id="" v-model="email" />
           </div>
           <div>
             <label for="">Password</label> <br />
@@ -54,7 +54,7 @@ export default {
       this.loading = true;
       try {
         const credentials = {
-          email_or_staff_id: this.email,
+          email: this.email,
           password: this.password,
         };
         const response = await helpers.login(credentials);

@@ -8,28 +8,31 @@ export default {
             .post(url + 'auth/login/', credentials);
         return response.data.data;
     },
-    async getIndex() {
-        const response = await axios.get(url + 'admin/data');
-        return response.data;
-    },
-    async createProduct(payload) {
-        const response = await axios.post(url + 'create-product', payload);
-        return response.data;
-    },
+    
     async getDepartments() {
         const response = await axios
             .get(url + 'admin/department/list');
         return response.data.data;
     },
-    async getDepartment(slug) {
+    async getDepartment(id) {
         const response = await axios
-            .get(`${url}admin/department/list/view/${slug}`);
+            .get(`${url}admin/department/view/${id}`);
         return response.data.data;
     },
-    async getCategories() {
+    async getStaffs() {
         const response = await axios
-            .get(url + 'all-categories/');
-        return response.data;
+            .get(url + 'admin/users/list');
+        return response.data.data;
+    },
+    async getRoles(){
+        const response = await axios
+        .get(url + 'admin/roles');
+        return response.data.data;
+    },
+    async onboardStaff(payload){
+        const response = await axios
+        .post(url + "admin/user/create", payload);
+        return response.data.data;
     },
     async getProductDetails(id) {
         const response = await axios.get(`${url}find-product/${id}`);

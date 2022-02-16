@@ -71,7 +71,7 @@ p {
 /* Signin Page  */
 
 .signin__page {
-    background: url("../img/login__bg.svg");
+    /* background: url("../img/login__bg.svg"); */
     background-color: rgba(0, 0, 0, 0.7);
     background-blend-mode: overlay;
     min-height: 100vh;
@@ -385,6 +385,13 @@ p {
     height: calc(3em + 0.75rem + 2px);
     padding: 10px 20px;
     box-shadow: none;
+    color: var(--accent-text-color);
+    font-size: 14px;
+}
+.user_onboarding_wrap .form-group .form-control option {
+    font-size: 14px;
+    color: var(--accent-text-color);
+    padding: 0.3rem !important;
 }
 
 input::-webkit-outer-spin-button,
@@ -714,6 +721,27 @@ hr {
 
 .department__button .btn-link {
     text-decoration: none;
+}
+.department .create-document{
+    background: var(--accent-color);
+    color: var(--light);
+    border: none;
+    border-radius: 20px;
+    padding: 5px 12px;
+    font-size: 12px;
+    border: 1px solid var(--accent-color);
+    transition: all 0.6s;
+    -webkit-transition: all 0.6s;
+    -o-transition: all 0.6s;
+}
+.department .create-document:hover {
+    border: 1px solid var(--accent-color);
+    background: transparent;
+    color: var(--accent-color);
+    transition: all 0.6s;
+    -webkit-transition: all 0.6s;
+    -o-transition: all 0.6s;
+
 }
 
 

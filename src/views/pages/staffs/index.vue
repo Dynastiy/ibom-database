@@ -36,17 +36,17 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr v-for="staff in staffs" :key="staff.id">
                   <td>
-                    <div class="d-flex align-items-center">
+                    <!-- <div class="d-flex align-items-center">
                       <div class="name_wrap">
                         <img src="@/assets/male_avatar.png" />
-                      </div>
-                      <span class="ml-2">Emmanuel Michael</span>
-                    </div>
+                      </div> -->
+                      {{ staff.name }}
+                    <!-- </div> -->
                   </td>
-                  <td>FMW/2002/1232/A12</td>
-                  <td class="text-capitalize">Manager</td>
+                  <td> {{ staff.staff_id }} </td>
+                  <td class="text-capitalize" v-if="staff.role"> {{ staff.role.name }} </td>
                   <td>Finance</td>
                   <!-- <td>
                       Finance Officer
@@ -127,3 +127,24 @@
     </div>
   </div>
 </template>
+
+<script>
+
+import helpers from '@/helpers/index.js'
+export default {
+  data(){
+    return{
+      staffs: [],
+    }
+  },
+  methods:{
+    async getStaffs(){
+      let res = await helpers.getStaffs();
+      this.staffs = res.users
+    }
+  },
+  async created(){
+    this.getStaffs();
+  }
+}
+</script>
