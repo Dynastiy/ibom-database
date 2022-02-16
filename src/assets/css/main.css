@@ -698,6 +698,10 @@ hr {
     margin-bottom: 10px;
 }
 
+.department .card-header {
+    border-bottom: 1px solid var(--accent-text-color) !important;
+}
+
 .department span {
     color: var(--description-color);
 }

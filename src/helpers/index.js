@@ -5,8 +5,8 @@ const url = 'https://ibomdemo.africanapp.store/api/v1/';
 export default {
     async login(credentials) {
         const response = await axios
-            .post(url + 'auth/signin/', credentials);
-        return response.data;
+            .post(url + 'auth/login/', credentials);
+        return response.data.data;
     },
     async getIndex() {
         const response = await axios.get(url + 'admin/data');
@@ -19,7 +19,12 @@ export default {
     async getDepartments() {
         const response = await axios
             .get(url + 'admin/department/list');
-        return response;
+        return response.data.data;
+    },
+    async getDepartment(slug) {
+        const response = await axios
+            .get(`${url}admin/department/list/view/${slug}`);
+        return response.data.data;
     },
     async getCategories() {
         const response = await axios
