@@ -19,6 +19,11 @@ export default {
             .get(`${url}admin/department/view/${id}`);
         return response.data.data;
     },
+    async createDepartment(payload){
+        const response = await axios
+            .post(url+'admin/department/create', payload);
+            return response.data.data
+    },
     async getStaffs() {
         const response = await axios
             .get(url + 'admin/users/list');

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
 *,
 html {
     padding: 0;
@@ -6,6 +7,9 @@ html {
     box-sizing: border-box;
     font-family: var(--primary-font);
     text-decoration: none !important;
+    transition: all 0.6s;
+    -webkit-transition: all 0.6s;
+    -o-transition: all 0.6s;
 }
 
 :root {
@@ -444,7 +448,7 @@ input::-webkit-inner-spin-button {
     align-items: center;
 }
 
-.message_wrap .form-group .d-flex input {
+.message_wrap .subject__input {
     /* border: none; */
     box-shadow: none;
     color: var(--light);
@@ -501,7 +505,9 @@ input::-webkit-inner-spin-button {
     display: none;
     margin-bottom: 20px;
 }
-
+.message_wrap label{
+    color: var(--accent-text-color);
+}
 
 /* Notification Page */
 
@@ -744,6 +750,64 @@ hr {
 
 }
 
+/* Add Department  */
+.add-department-modal{
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.4);
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.add-department-modal-body {
+    background-color: var(--nav-color);
+    width: 40%;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.125);
+}
+.add-department-modal-body h5 {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+.add-department-modal-body label {
+    color: var(--accent-text-color);
+    font-size: 0.8rem;
+}
+.add-department-modal-body input, .add-department-modal-body textarea {
+    padding: 0.6rem;
+    width: 100%;
+    border-radius: 3px;
+    border: none;
+    font-size: 0.8rem;
+}
+.add-department-modal-body input::placeholder, .add-department-modal-body textarea::placeholder{
+    font-size: 0.8rem;
+}
+.add-department-modal-body ion-icon{
+    color: var(--accent-text-color);
+    font-size: 24px;
+}
+.create__department button {
+    padding: 0.4rem;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    text-transform: uppercase;
+    background-color: var(--accent-color);
+    font-size: 0.8rem;
+    color: var(--accent-text-color);
+    font-weight: bold;
+    border: 1px solid var(--accent-color);
+}
+.create__department button:hover {
+    background-color: transparent;
+    color: var(--accent-color);
+}
+
 
 /* All Staffs */
 
@@ -757,4 +821,81 @@ hr {
     color: white;
     outline: none;
     border: none;
+}
+
+
+/* Settings Page  */
+
+/* Settings header */
+.settings__header a{
+    color: var(--inactive-text);
+    margin-right: 2rem;
+    padding: 0.6rem  2rem;
+    border-radius: 30px;
+    /* padding: 2rem; */
+}
+.settings__header .router-link-exact-active {
+    background-color: var(--accent-color-transparent);
+    border: 1px solid var(--black1);
+    color: var(--accent-color);
+}
+
+/* Roles Page  */
+.create__role {
+    padding: 0.4rem 2rem;
+    font-size: 0.8rem;
+    background-color: var(--accent-color);
+    color: var(--accent-text-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 20px;
+}
+.create__role:hover {
+    background-color: transparent;
+    color: var(--accent-color);
+}
+.add__role {
+    background-color: var(--accent-color-transparent);
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.4);
+    padding: 1rem;
+    margin-top: 0.8rem;
+}
+.add-role-body {
+    display: grid;
+    grid-template-columns: 65% auto auto;
+    grid-gap: 20px;
+    align-items: center;
+}
+.add__role h5 {
+    color: var(--accent-text-color);
+    font-weight: bold;
+}
+.add__role input {
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
+.add-role-body input::placeholder{
+    font-size: 0.8rem;
+}
+.add-role-body select{
+    font-size: 0.8rem;
+    padding: 0.8rem;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+}
+.add-role-btn button {
+    padding: 0.8rem 2rem;
+    font-size: 0.8rem;
+    background-color: var(--accent-color);
+    color: var(--accent-text-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
+    width: 100%;
+}
+.add-role-btn button:hover {
+    background-color: transparent;
+    color: var(--accent-color);
 }

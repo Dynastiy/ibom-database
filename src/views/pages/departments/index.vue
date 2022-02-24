@@ -2,7 +2,7 @@
   <div>
     <div class="department">
       <div class="text-right mb-3">
-        <button class="create-document"> <span class=""
+        <button class="create-document" @click="add_department = !add_department"> <span class=""
               ><ion-icon name="add"></ion-icon
             ></span> Create Department </button>
       </div>
@@ -121,27 +121,47 @@
       </div>
 
 
-      <div class="add-department-modal">
-        <div class="add-depaertment-modal-body">
-          <form action="">
+      <div class="add-department-modal animate__animated animate__fadeIn" id="add_department" v-show="add_department">
+        <div class="add-department-modal-body">
+          <form action="" @submit.prevent="createDepartment">
             <div>
-              <div class="form-group mx-2 mt-2">
-                <label for="" class="py-2">Name of Department</label>
+              <div class="d-flex justify-content-between">
+                <h5 class="card-title mb-3">
+                Create New Department
+              </h5>
+              <div @click="add_department = !add_department">
+                <ion-icon name="close-circle-outline"></ion-icon>
+              </div>
+              </div>
+              <div class="form-group  mt-2">
+                <label for="" class="">Name of Department</label>
                 <input
+                v-model="name"
                   type="text"
-                  class="form-control"
-                  placeholder="Last Name"
+                  class=""
+                  placeholder="Name of Department"
                   required
                 />
               </div>
-              <div class="form-group mx-2 mt-2">
-                <label for="" class="py-2">Description</label>
+              <div class="form-group  mt-2">
+                <label for="" class="">Description</label>
                 <textarea
+                v-model="description"
                   type="text"
-                  class="form-control"
-                  placeholder="Last Name"
+                  class=""
+                  placeholder="Description"
                   required
                 />
+              </div>
+              <div class="create__department">
+                <button type="submit" v-if="loading" disabled>
+                  <div class="d-flex justify-content-center">
+                    <div class="spinner-border" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                  </div>
+                </button>
+                <button type="submit" v-else>Create</button>
               </div>
             </div>
           </form>
@@ -154,10 +174,15 @@
 
 <script>
 import helpers from "@/helpers/index.js"
+import Swal from 'sweetalert2'
 export default {
     data(){
         return{
-            departments: []
+            departments: [],
+            add_department: false,
+            name: '',
+            description: '',
+            loading: false,
         }
     },
     methods:{
@@ -170,6 +195,29 @@ export default {
       let res = await helpers.getDepartment(department.slug);
             console.log(res);
     },
+    async createDepartment(){
+      var payload = {
+        name: this.name,
+        description: this.description
+      }
+      this.loading = true
+      try {
+        let res = await helpers.createDepartment(payload)
+        console.log(res);
+        Swal.fire("Done!", "Department Created Successfully!", "success");
+        this.add_department = false
+        this.getDepartments()
+        this.name = '';
+        this.description = '';
+      } catch (error) {
+        console.log(error);
+        Swal.fire("Error!", "Something went wrong!", "warning");
+        this.name = '';
+        this.description = '';
+      }
+      this.loading = false
+    },
+    
     },
     async created(){
         this.getDepartments();

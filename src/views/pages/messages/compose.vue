@@ -17,13 +17,19 @@
             </div>
           </div>
           <!-- Subject -->
-          <div class="form-group mb-4">
-            <div class="d-flex subject__input">
-              <input type="text" class="form-control" placeholder="Subject" />
-            </div>
+          <div class=" row mb-4">
+              <div class="col-md-8">
+                <label for="">Subject</label> <br>
+                <input type="text" class="form-control subject__input" placeholder="Subject" /> 
+              </div>
+              <div class="col-md-4">
+                <label for="">Due Date</label>
+                <input type="date" class="form-control subject__input" placeholder="Choose Date" />
+              </div>
           </div>
           <!-- Textarea -->
           <div class="form-group">
+            <label for="">Task Description</label>
             <textarea
               class="form-control"
               id="exampleFormControlTextarea1"
@@ -78,12 +84,6 @@ export default {
         console.log(this.image);
         let getImageSize = this.image.size/1024;
         this.size = Math.round(getImageSize);
-  // if($event.target.files.length > 0){
-  //   var src = URL.createObjectURL(event.target.files[0]);
-  //   var preview = document.getElementById("file-ip-1-preview");
-  //   preview.src = src;
-  //   preview.style.display = "block";
-  // }
       },
   },
 };

@@ -91,13 +91,42 @@ const routes = [{
                     import ( /* webpackChunkName: "about" */ '../views/pages/chat/index.vue')
             },
             {
-                path: '/dashboard/profile',
-                name: 'Profile',
+                path: '/dashboard/settings',
+                name: 'Settings',
                 // route level code-splitting
                 // this generates a separate chunk (about.[hash].js) for this route
                 // which is lazy-loaded when the route is visited.
                 component: () =>
-                    import ( /* webpackChunkName: "about" */ '../views/pages/profile/index.vue')
+                    import ( /* webpackChunkName: "about" */ '../views/pages/settings/index.vue'),
+                    children:[
+                        {
+                            path: '/dashboard/settings',
+                            name: 'Settings',
+                            // route level code-splitting
+                            // this generates a separate chunk (about.[hash].js) for this route
+                            // which is lazy-loaded when the route is visited.
+                            component: () =>
+                                import ( /* webpackChunkName: "about" */ '../views/pages/settings/profile/index.vue')
+                        },
+                        {
+                            path: '/dashboard/settings/roles',
+                            name: 'Settings',
+                            // route level code-splitting
+                            // this generates a separate chunk (about.[hash].js) for this route
+                            // which is lazy-loaded when the route is visited.
+                            component: () =>
+                                import ( /* webpackChunkName: "about" */ '../views/pages/settings/roles/index.vue')
+                        },
+                        {
+                            path: '/dashboard/settings/departments',
+                            name: 'Settings',
+                            // route level code-splitting
+                            // this generates a separate chunk (about.[hash].js) for this route
+                            // which is lazy-loaded when the route is visited.
+                            component: () =>
+                                import ( /* webpackChunkName: "about" */ '../views/pages/settings/departments/index.vue')
+                        },
+                    ]
             },
         ],
 
