@@ -7,6 +7,7 @@ html {
     box-sizing: border-box;
     font-family: var(--primary-font);
     text-decoration: none !important;
+    list-style: none;
     transition: all 0.6s;
     -webkit-transition: all 0.6s;
     -o-transition: all 0.6s;
@@ -841,13 +842,39 @@ hr {
 }
 
 /* Roles Page  */
+.role_wrap h5 {
+    color: var(--inactive-text);
+    
+}
+.roles_header p {
+    color: var(--inactive-text2);
+    font-size: 11px;
+}
+.view_all_roles_section {
+    border: 1px solid var(--inactive-text2);
+    border-radius: 5px;
+    margin-top: 30px;
+    padding: 10px 20px;
+}
+.view_all_roles_section h5 {
+    padding-top: 10px;
+    font-size: 12px;
+}
+.list_section li {
+font-size: 12px;
+color: var(--accent-text-color);
+}
+.select_section {
+    background: rgba(40, 32, 26, 0.5) !important;
+}
 .create__role {
-    padding: 0.4rem 2rem;
+    padding: 0.4rem 1.5rem;
     font-size: 0.8rem;
+    font-weight: 600;
     background-color: var(--accent-color);
     color: var(--accent-text-color);
     border: 1px solid var(--accent-color);
-    border-radius: 20px;
+    border-radius: 7px;
 }
 .create__role:hover {
     background-color: transparent;
@@ -908,5 +935,53 @@ hr {
     grid-gap: 20px;
 }
 .chat-area{
-    background-color: red;
+    border-radius: 20px;
+    min-height: 90vh;
+    background-color: var(--black1);
+}
+
+.chat_wrap img {
+    width: 40px;
+    object-fit: fill;
+}
+.chat_wrap li {
+    display: flex;
+    margin-top: 10px;
+}
+.chat_list_wrap .write_up_wrap {
+    margin-left: 20px;
+}
+.chat_list_wrap p {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent-text-color);
+}
+.chat_list_wrap span {
+    font-size: 12px;
+    color: var(--inactive-text2);
+}
+.span_wrap .text-white {
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.chat_area_section {
+    text-align: center;
+}
+.chat-area .chat_content {
+    padding-top: 200px;
+}
+
+.chat_area_section .write_up_wrap p {
+    color: var(--accent-text-color);
+}
+.chat_area_section .add_room_wrap button {
+    background-color: var(--accent-color);
+    padding: 10px 30px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent-text-color);
 }
