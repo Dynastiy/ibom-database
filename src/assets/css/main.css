@@ -899,3 +899,14 @@ hr {
     background-color: transparent;
     color: var(--accent-color);
 }
+
+
+/* Meeting Room  */
+.meeting-room {
+    display: grid;
+    grid-template-columns: 20% auto;
+    grid-gap: 20px;
+}
+.chat-area{
+    background-color: red;
+}

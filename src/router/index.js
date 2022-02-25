@@ -88,7 +88,18 @@ const routes = [{
                 // this generates a separate chunk (about.[hash].js) for this route
                 // which is lazy-loaded when the route is visited.
                 component: () =>
-                    import ( /* webpackChunkName: "about" */ '../views/pages/chat/index.vue')
+                    import ( /* webpackChunkName: "about" */ '../views/pages/chat/index.vue'),
+                    children:[
+                          {
+                path: '/dashboard/meeting-room',
+                name: 'Meeting Room',
+                // route level code-splitting
+                // this generates a separate chunk (about.[hash].js) for this route
+                // which is lazy-loaded when the route is visited.
+                component: () =>
+                    import ( /* webpackChunkName: "about" */ '../views/pages/chat/chat-area/index.vue'),
+                          },
+                    ]
             },
             {
                 path: '/dashboard/settings',
