@@ -11,7 +11,7 @@
         </p>
         <form action="" @submit.prevent="login">
           <div class="mt-4">
-            <label for="">Staff ID</label> <br />
+            <label for="">Email</label> <br />
             <input type="text" name="" id="" v-model="email" />
           </div>
           <div>

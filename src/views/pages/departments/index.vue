@@ -43,28 +43,22 @@
                   <th>Name</th>
                   <th>Staff ID</th>
                   <th>Role</th>
-                  <th>Department</th>
-                  <th>Permissions</th>
-                  <th></th>
+                  <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <tr v-for="item in staffs" :key="item.id">
                   <td>
                     <div class="d-flex align-items-center">
                       <div class="name_wrap">
                         <img src="@/assets/male_avatar.png" />
                       </div>
-                      <span class="ml-2">Emmanuel Michael</span>
+                      <span class="ml-2"> {{ item.first_name }}  {{ item.last_name }} </span>
                     </div>
                   </td>
-                  <td>FMW/2002/1232/A12</td>
-                  <td class="text-capitalize">Manager</td>
-                  <td>Finance</td>
+                  <td> {{ item.staff_id }} </td>
+                  <td class="text-capitalize" > {{ item.role_id }} </td>
                   <!-- <td>
-                      Finance Officer
-                    </td> -->
-                  <td>
                     <div class="dropdown select">
                       <button
                         class="dropdown-toggle"
@@ -87,8 +81,9 @@
                       </div>
                     </div>
                    
-                  </td>
-                  <td>
+                  </td> -->
+                  <td class="d-flex">
+                      <router-link :to=" '/dashboard/staff/'+item.id "><button class="view-more-button">View More</button></router-link>
                     <div class="btn-group dropleft">
                       <button
                         type="button"
@@ -183,17 +178,19 @@ export default {
             name: '',
             description: '',
             loading: false,
+            staffs: [],
         }
     },
     methods:{
         async getDepartments(){
             let res = await helpers.getDepartments();
-            console.log(res);
+            // console.log(res);
             this.departments = res
         },
         async getContent(department){
       let res = await helpers.getDepartment(department.slug);
-            console.log(res);
+      this.staffs = res.members;
+            console.log(res.members);
     },
     async createDepartment(){
       var payload = {

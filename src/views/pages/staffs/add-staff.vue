@@ -8,9 +8,9 @@
 
       <div class="registration_wrap mt-3">
         <form action="" @submit.prevent="onboardStaff">
-          <div class="row justify-content-center">
+          <div class="row">
             <div class="col-md-6">
-              <div class="form-group mx-2 mt-2">
+              <div class="form-group mt-2">
                 <label for="" class="py-2">First Name</label>
                 <input
                   type="text"
@@ -22,7 +22,7 @@
               </div>
             </div>
             <div class="col-md-6">
-              <div class="form-group mx-2 mt-2">
+              <div class="form-group mt-2">
                 <label for="" class="py-2">Last Name</label>
                 <input
                   type="text"
@@ -34,7 +34,7 @@
               </div>
             </div>
             <div class="col-md-6">
-              <div class="form-group mx-2 mt-2">
+              <div class="form-group mt-2">
                 <label for="" class="py-2">Work Email</label>
                 <input
                   type="text"
@@ -46,7 +46,7 @@
               </div>
             </div>
              <div class="col-md-6">
-              <div class="form-group mx-2 mt-2">
+              <div class="form-group mt-2">
                 <label for="" class="py-2">Staff ID</label>
                 <input
                   type="text"
@@ -57,19 +57,8 @@
                 />
               </div>
             </div>
-            <!-- <div class="col-md-6">
-              <div class="form-group mx-2 mt-2">
-                <label for="" class="py-2">Phone Number</label>
-                <input
-                  type="number"
-                  class="form-control"
-                  placeholder="Phone Number"
-                  required
-                />
-              </div>
-            </div> -->
             <div class="col-md-6">
-              <div class="form-group mx-2 mt-2">
+              <div class="form-group mt-2">
                 <label for="exampleFormControlSelect1" class="py-2"
                   >Department</label
                 >
@@ -85,7 +74,7 @@
               </div>
             </div>
             <div class="col-md-6">
-              <div class="form-group mx-2 mt-2">
+              <div class="form-group mt-2">
                 <label for="exampleFormControlSelect1" class="py-2"
                   >Role</label
                 >
@@ -101,7 +90,7 @@
               </div>
             </div>
             <div class="col-md-6">
-              <div class="form-group mx-2 mt-2">
+              <div class="form-group mt-2">
                 <label for="" class="py-2">Grade Level</label>
                 <input
                   type="number"
@@ -113,7 +102,7 @@
               </div>
             </div>
             <div class="col-md-6">
-              <div class="form-group mx-2 mt-2">
+              <div class="form-group mt-2">
                 <label for="" class="py-2">Date Hired</label>
                 <input
                   type="date"
@@ -125,10 +114,15 @@
               </div>
             </div>
           </div>
-          <div>
-            <button type="submit">
-              Submit
+          <div class="sign-in-button">
+            <button type="submit" v-if="loading" disabled>
+              <div class="d-flex justify-content-center">
+                <div class="spinner-border" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </div>
             </button>
+            <button type="submit" class="py-3 mt-3" v-else>Submit</button>
           </div>
         </form>
       </div>
@@ -138,6 +132,7 @@
 
 <script>
 import helpers from '@/helpers/index.js'
+import Swal from "sweetalert2";
 export default {
   data(){
     return {
@@ -149,10 +144,11 @@ export default {
         role_id: '---',
         department_id: '---',
         level: '',
-        date_hired: ''
+        date_hired: '',
       },
       roles: [],
       departments: [],
+      loading: false,
     }
   },
   methods:{
@@ -165,9 +161,17 @@ export default {
       this.departments = res;
     },
     async onboardStaff(){
-      let res = await helpers.onboardStaff(this.payload);
-      console.log(res);
-      // console.log(this.payload);
+      this.loading = true
+      try {
+        let res = await helpers.onboardStaff(this.payload);
+        console.log(res);
+        Swal.fire("Done!", "Successful!", "success");
+        this.payload = {};
+      } catch (error) {
+        console.log(error);
+        this.payload = {};
+      }
+      this.loading = false
     }
   },
   async created(){

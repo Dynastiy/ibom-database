@@ -1,13 +1,5 @@
 <template>
   <div>
-    <div>
-      <h1 class="text-white">
-        Listing all staffs under this staff -
-        <span class="small"
-          >Will not display if there are no staffs under this staff</span
-        >
-      </h1>
-    </div>
     <div class="staff-container">
       <div class="add-staff d-flex justify-content-end">
         <router-link class="route_link" to="/dashboard/staffs/add-staff">
@@ -31,7 +23,7 @@
                   <th>Staff ID</th>
                   <th>Role</th>
                   <th>Department</th>
-                  <th>Permissions</th>
+                  <th>Actions</th>
                   <th></th>
                 </tr>
               </thead>
@@ -48,56 +40,11 @@
                   <td> {{ staff.staff_id }} </td>
                   <td class="text-capitalize" v-if="staff.role"> {{ staff.role.name }} </td>
                   <td>Finance</td>
+                  <td>
+                      <router-link :to=" '/dashboard/staff/'+staff.id "><button class="view-more-button">View More</button></router-link>
+                    </td>
+                 
                   <!-- <td>
-                      Finance Officer
-                    </td> -->
-                  <td>
-                    <div class="dropdown select">
-                      <button
-                        class="dropdown-toggle"
-                        type="button"
-                        id="dropdownMenuButton"
-                        data-toggle="dropdown"
-                        aria-expanded="false"
-                      >
-                        Select
-                      </button>
-                      <div
-                        class="dropdown-menu"
-                        aria-labelledby="dropdownMenuButton"
-                      >
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#"
-                          >Something else here</a
-                        >
-                      </div>
-                    </div>
-                    <!-- <div class="btn-group dropright ml-2">
-                      <button
-                        type="button"
-                        class="more__icon select_btn text-white"
-                        data-toggle="dropdown"
-                        aria-expanded="false"
-                      >
-                        
-                        Select
-                      </button>
-                      <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Activate</a>
-                        <a class="dropdown-item" href="#">De-activate</a>
-                        
-                        <a class="dropdown-item" href="#">Edit</a>
-                        
-                      </div>
-                    </div> -->
-                    <!-- <button class="view-more-button">
-                       Select
-                     </button> -->
-
-                    <!-- Default button -->
-                  </td>
-                  <td>
                     <div class="btn-group dropleft">
                       <button
                         type="button"
@@ -105,18 +52,15 @@
                         data-toggle="dropdown"
                         aria-expanded="false"
                       >
-                        <!-- Dropleft -->
                         <ion-icon name="more"></ion-icon>
                       </button>
                       <div class="dropdown-menu">
                         <a class="dropdown-item" href="#">Activate</a>
                         <a class="dropdown-item" href="#">De-activate</a>
-                        <!-- <div class="dropdown-divider"></div> -->
                         <a class="dropdown-item" href="#">Edit</a>
-                        <!-- <div class="dropdown-divider"></div> -->
                       </div>
                     </div>
-                  </td>
+                  </td> -->
                 </tr>
               </tbody>
             </table>

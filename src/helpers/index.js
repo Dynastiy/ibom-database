@@ -11,36 +11,50 @@ export default {
     
     async getDepartments() {
         const response = await axios
-            .get(url + 'admin/department/list');
+            .get(url + 'admin/departments');
         return response.data.data;
     },
     async getDepartment(id) {
         const response = await axios
-            .get(`${url}admin/department/view/${id}`);
+            .get(`${url}admin/departments/${id}`);
         return response.data.data;
     },
     async createDepartment(payload){
         const response = await axios
-            .post(url+'admin/department/create', payload);
+            .post(url+'admin/departments', payload);
             return response.data.data
     },
     async getStaffs() {
         const response = await axios
-            .get(url + 'admin/users/list');
-        return response.data.data;
-    },
-    async getRoles(){
-        const response = await axios
-        .get(url + 'admin/roles');
+            .get(url + 'admin/users');
         return response.data.data;
     },
     async onboardStaff(payload){
         const response = await axios
-        .post(url + "admin/user/create", payload);
+        .post(url + "admin/users", payload);
+        return response.data.data;
+    },
+    async getStaff(id) {
+        const response = await axios
+            .get(`${url}admin/users/${id}`);
         return response.data.data;
     },
     async getProductDetails(id) {
         const response = await axios.get(`${url}find-product/${id}`);
         return response.data
     },
+    async getPermissions(){
+        const response = await axios.get(url+ 'admin/permissions');
+        return response.data.data
+    },
+    async createRole(payload){
+        const response = await axios
+        .post(url + "admin/roles", payload);
+        return response.data.data;
+    },
+    async getRoles(){
+        const response = await axios
+        .get(url + 'admin/roles');
+        return response.data.data;
+    }
 };

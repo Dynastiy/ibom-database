@@ -1,0 +1,67 @@
+:root {
+    --primary-color4: #B25000;
+    --primary-color3: #CB5B00;
+    --primary-color2: #E56700;
+    --primary-color1: #E56700;
+    --secondary-color1: #00A44E;
+    --secondary-color2: #009446;
+    --secondary-color3: #00833E;
+    --secondary-color4: #007337;
+    --dark-background: #100700;
+    --faded-background: #2D2A28;
+    --accent-color: #FF7200;
+    --accent-color-transparent: #ff730038;
+    --dark: #000;
+    --nav-color: #3B2B1E;
+    --black1: #28201A;
+    --black2: #403933;
+    --inactive-text: #E0DEDF;
+    --inactive-text2: #8B8B8B;
+    --accent-text-color: #EDECED;
+    --description-color: #F2F1F1;
+    --heading-text-color: #F6F6F6;
+    --light: #fff;
+}
+
+@media (max-width: 990px) {
+    #app-drawer {
+        display: none;
+    }
+    #main {
+        margin-left: unset;
+    }
+    .larger-screens {
+        display: none;
+    }
+    .smaller-screens {
+        display: unset;
+    }
+    #mobile-app-drawer .app-header {
+        background-color: var(--dark);
+        padding: 0.6rem 2rem;
+    }
+    .mobile-menu ion-icon {
+        color: var(--accent-text-color);
+        font-size: 30px;
+    }
+    .settings__header a {
+        color: var(--inactive-text);
+        margin-right: 1rem;
+        padding: 0.3rem 1rem;
+        border-radius: 30px;
+        /* padding: 2rem; */
+        font-size: 0.8rem;
+    }
+    .add-department-modal-body {
+        width: 80%;
+    }
+    .add-role-body {
+        display: unset;
+    }
+    .add-role-body div {
+        margin-bottom: 1rem;
+    }
+    .app-drawer-menu li .router-link-exact-active::after {
+        display: none;
+    }
+}
