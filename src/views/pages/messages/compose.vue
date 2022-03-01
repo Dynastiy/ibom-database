@@ -5,7 +5,7 @@
         <form action="" @submit.prevent="assignTask">
           <div class="mb-3">
             <!-- To Recepient -->
-            <div class="d-flex" style="gap:20px">
+            <div class="d-flex" style="gap: 20px">
               <span class="sender__to">To</span>
               <!-- <input type="text" class="form-control" placeholder="" /> -->
               <input type="text" class="form-control subject__input" v-model="dataObj.assigned_to" placeholder="Receiver" /> 
@@ -48,21 +48,31 @@
             </textarea>
           </div>
           <div class="d-flex align-items-center justify-content-between">
-             <div class="center">
-                <div class="form-input">
-                  <div class="preview">
-                    <img id="file-ip-1-preview">
-                  </div>
-                  <label for="file-ip-1"><ion-icon name="attach"></ion-icon>  Add Attachment</label>
-                  <input type="file" id="file-ip-1" accept="image/*" @change="showPreview($event);">
+            <div class="center">
+              <div class="form-input">
+                <div class="preview">
+                  <img id="file-ip-1-preview" />
                 </div>
-                <span v-if="image" class="text-secondary"> {{ image.name }} ({{ size }}kb) </span>
+                <label for="file-ip-1"
+                  ><ion-icon name="attach"></ion-icon> Add Attachment</label
+                >
+                <input
+                  type="file"
+                  id="file-ip-1"
+                  accept="image/*"
+                  @change="showPreview($event)"
+                />
               </div>
-            <div>
-              <button class="" type="submit">  Send Document <ion-icon name="send"></ion-icon></button>
+              <span v-if="image" class="text-secondary">
+                {{ image.name }} ({{ size }}kb)
+              </span>
+            </div>
+            <div class="send_document_wrap">
+              <button class="" type="submit">
+                Send Document <ion-icon name="send"></ion-icon>
+              </button>
             </div>
           </div>
-
         </form>
       </div>
     </div>

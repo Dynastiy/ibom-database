@@ -904,17 +904,21 @@ hr {
 /* Settings header */
 
 .settings__header a {
-    color: var(--inactive-text);
+    color: var(--accent-text-color);
+    /* color: var(--inactive-text); */
     margin-right: 2rem;
-    padding: 0.6rem 2rem;
-    border-radius: 30px;
+    padding: 0.4rem 1rem;
+    border-radius: 10px;
     /* padding: 2rem; */
 }
 
 .settings__header .router-link-exact-active {
-    background-color: var(--accent-color-transparent);
+    /* background-color: var(--accent-color-transparent); */
+    background: rgba(40, 32, 26, 0.5);
+    border-radius: 10px;
     border: 1px solid var(--black1);
-    color: var(--accent-color);
+    /* color: var(--accent-color); */
+    color: var(--accent-text-color);
 }
 
 
@@ -1021,11 +1025,18 @@ hr {
 
 .add-role-dropdown .dropdown-toggle {
     /* display: flex; */
-    padding: 0.8rem;
+    background: rgba(40, 32, 26, 0.5);
+    border: 1.5px solid var(--black2) !important;
+    color: var(--accent-text-color);
+    padding: 0.3rem 1rem;
     width: 100%;
     border: none;
     border-radius: 5px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+}
+.add-role-dropdown .dropdown-menu {
+    background: rgba(40, 32, 26, 0.5);
+    min-width: 9rem;
 }
 
 .add-role-dropdown .dropdown-menu {
@@ -1038,6 +1049,14 @@ hr {
 
 .add-role-dropdown .select-permission input {
     margin-right: 0.5rem;
+}
+.remove_section li {
+    text-align: center;
+}
+.remove_section ion-icon {
+    color: var(--accent-text-color);
+    font-size: 24px;
+    cursor: pointer;
 }
 
 
