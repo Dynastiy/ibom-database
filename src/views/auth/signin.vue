@@ -61,10 +61,21 @@ export default {
         console.log(response);
         const token = response.token;
         const user = response.user;
-        this.$store.dispatch("login", { token, user });
-        Swal.fire("Welcome!", "Login Successful!", "success");
+        const fully_onboarded = response.fully_onboarded
+        if(user.name === 'Admin'){
+          this.$router.push("/");
+           Swal.fire(`Welcome ${user.name}!`, "Login Successful!", "success");
+        }
+        else if(response.fully_onboarded === 'False'){
+          this.$router.push('/update-details');
+           Swal.fire(`Welcome ${user.name}!`, "First Time User, please complete your profile!", "success");
+        }
+        else{
+          this.$router.push("/");
+           Swal.fire(`Welcome ${user.name}!`, "Login Successful!", "success");
+        }
+        this.$store.dispatch("login", { token, user, fully_onboarded });
         this.loading = false;
-        this.$router.push("/");
       } catch (error) {
         console.log(error);
         this.email = "";

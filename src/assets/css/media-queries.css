@@ -64,4 +64,8 @@
     .app-drawer-menu li .router-link-exact-active::after {
         display: none;
     }
+    .update-profile-wrap .user_onboarding_wrap {
+        width: 100%;
+        padding: 1.5rem;
+    }
 }

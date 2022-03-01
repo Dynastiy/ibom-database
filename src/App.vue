@@ -25,11 +25,16 @@
 
 <script>
 export default {
+  
    async created() {
+     
     if (!this.$store.getters.isLoggedIn) {
       this.$router.push('/signin');
     }
     console.log(this.$store.getters.isLoggedIn);
+    console.log(this.$store.getters.getOnboarding);
+    
+    
    }
 }
 </script>

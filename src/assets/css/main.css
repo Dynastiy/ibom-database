@@ -445,7 +445,7 @@ p {
 .user_onboarding_wrap .form-group .form-control option {
     font-size: 14px;
     color: var(--accent-text-color);
-    padding: 0.3rem !important;
+    padding: 0.5rem !important;
 }
 
 input::-webkit-outer-spin-button,
@@ -627,9 +627,8 @@ input::-webkit-inner-spin-button {
 .my-office-sidemenu {
     /* background-color: var(--accent-text-color); */
     height: 100vh;
-    width: 30rem;
     color: var(--accent-text-color);
-    border-right: 4px solid var(--black2);
+    /* border-right: 4px solid var(--black2); */
 }
 
 .my-office-content {
@@ -638,11 +637,12 @@ input::-webkit-inner-spin-button {
     width: 100%;
 }
 
-.my-office-page {
+
+/* .my-office-page {
     display: flex;
     align-items: center;
     grid-gap: 20px;
-}
+} */
 
 .my-office-sidemenu img {
     width: 40px;
@@ -651,9 +651,16 @@ input::-webkit-inner-spin-button {
 }
 
 .my-office-sidemenu .content {
-    padding-right: 2rem;
+    padding: 0.6rem;
     display: flex;
     gap: 20px;
+    background-color: var(--inactive-text);
+    border-bottom: 1px solid var(--dark-background);
+}
+
+.my-office-sidemenu .content:hover {
+    background-color: var(--inactive-text2);
+    cursor: pointer;
 }
 
 .unread {
@@ -664,7 +671,8 @@ input::-webkit-inner-spin-button {
 }
 
 .my-office-sidemenu h6 {
-    color: var(--heading-text-color);
+    color: var(--dark-background);
+    font-weight: bold;
 }
 
 .my-office-sidemenu .description {
@@ -673,12 +681,12 @@ input::-webkit-inner-spin-button {
 }
 
 .my-office-sidemenu .time__stamp {
-    color: var(--inactive-text2);
+    color: var(--dark-background);
     font-size: 0.7rem;
 }
 
 .my-office-sidemenu .main__text {
-    color: var(--inactive-text2);
+    color: var(--dark-background);
     font-size: 0.8rem;
     margin-top: 0.6rem;
 }
@@ -1166,4 +1174,94 @@ hr {
 .right__side .top {
     font-size: 0.8rem;
     color: var(--inactive-text2);
+}
+
+
+/* Update details */
+
+.update-profile-wrap {
+    background-color: var(--dark-background);
+}
+
+.update-profile-wrap .user_onboarding_wrap {
+    width: 60%;
+    padding: 2rem;
+    margin: 0 auto;
+}
+
+.update-profile-wrap .user_onboarding_wrap h3 {
+    color: var(--accent-color);
+}
+
+.user_onboarding_wrap .profile_photo img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
+}
+
+.center {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* .profile_photo .center {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+.form-input input {
+    display: none;
+}
+
+.form-input label {
+    display: block;
+    padding: 0.3rem 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    background: var(--accent-color);
+    color: #fff !important;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-input img {
+    width: 50%;
+    display: none;
+    margin-bottom: 20px;
+}
+
+.form-input2 input {
+    display: none;
+}
+
+.form-input2 label {
+    display: block;
+    padding: 0.3rem 1.7rem;
+    text-align: center;
+    margin: 0;
+    background: var(--secondary-color3);
+    color: #fff !important;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-input2 img {
+    width: 100px;
+    display: none;
+    object-fit: cover;
+    object-position: to;
+    margin-bottom: 20px;
+    height: 100px;
 }

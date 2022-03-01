@@ -2,13 +2,15 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import Axios from 'axios';
 import createPersistedState from 'vuex-persistedstate';
+// import helpers from '@/helpers/index.js'
 
 Vue.use(Vuex);
 
 const getDefaultState = () => {
     return {
         token: '',
-        user: {}
+        user: {},
+        fully_onboarded: '',
     };
 };
 
@@ -22,6 +24,9 @@ export default new Vuex.Store({
         },
         getUser: state => {
             return state.user;
+        },
+        getOnboarding: state => {
+            return state.fully_onboarded
         }
     },
     mutations: {
@@ -31,14 +36,18 @@ export default new Vuex.Store({
         SET_USER: (state, user) => {
             state.user = user;
         },
+        SET_ONBOARDING: (state, fully_onboarded) => {
+            state.fully_onboarded = fully_onboarded;
+        },
         RESET: state => {
             Object.assign(state, getDefaultState());
         }
     },
     actions: {
-        login: ({ commit }, { token, user }) => {
+        login: ({ commit }, { token, user, fully_onboarded }) => {
             commit('SET_TOKEN', token);
             commit('SET_USER', user);
+            commit('SET_ONBOARDING', fully_onboarded)
 
             // set auth header
             Axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;

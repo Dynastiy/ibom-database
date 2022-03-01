@@ -53,35 +53,11 @@
                       <div class="name_wrap">
                         <img src="@/assets/male_avatar.png" />
                       </div>
-                      <span class="ml-2"> {{ item.first_name }}  {{ item.last_name }} </span>
+                      <span class="ml-2"> {{ item.name }} </span>
                     </div>
                   </td>
                   <td> {{ item.staff_id }} </td>
-                  <td class="text-capitalize" > {{ item.role_id }} </td>
-                  <!-- <td>
-                    <div class="dropdown select">
-                      <button
-                        class="dropdown-toggle"
-                        type="button"
-                        id="dropdownMenuButton"
-                        data-toggle="dropdown"
-                        aria-expanded="false"
-                      >
-                        Select
-                      </button>
-                      <div
-                        class="dropdown-menu"
-                        aria-labelledby="dropdownMenuButton"
-                      >
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#"
-                          >Something else here</a
-                        >
-                      </div>
-                    </div>
-                   
-                  </td> -->
+                  <td class="text-capitalize"> <span  v-if="item.role"> {{ item.role.name }}</span> <span v-else>Null</span>  </td>
                   <td class="d-flex">
                       <router-link :to=" '/dashboard/staff/'+item.id "><button class="view-more-button">View More</button></router-link>
                     <div class="btn-group dropleft">
