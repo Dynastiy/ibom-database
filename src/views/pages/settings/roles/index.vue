@@ -85,7 +85,7 @@
             </div>
             <div class="col-4"></div>
           </div>
-          <div class="d-flex row" v-for="role in Roles" :key="role.index">
+          <div class="row" v-for="role in Roles" :key="role.index">
             <div class="roles_section col-4">
               <div class="list_section">
                 <ul>

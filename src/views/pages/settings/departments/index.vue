@@ -85,15 +85,19 @@
             </div>
             <div class="col-4"></div>
           </div>
-          <div class="d-flex justify-content-between">
-            <div class="roles_section">
+          <div
+            class="row"
+            v-for="department in Departments"
+            :key="department.index"
+          >
+            <div class="roles_section col">
               <div class="list_section">
-                <ul v-for="role in Roles" :key="role.index">
-                  <li>{{ role.name }}</li>
+                <ul>
+                  <li>{{ department.name }}</li>
                 </ul>
               </div>
             </div>
-            <div class="permissions_section">
+            <div class="permissions_section col">
               <div class="list_section">
                 <div class="">
                   <div class="add-role-dropdown">
@@ -130,7 +134,7 @@
                 </div>
               </div>
             </div>
-            <div class="remove_section">
+            <div class="remove_section col">
               <!-- <h5>REMOVE</h5> -->
               <div class="list_section">
                 <ul>
@@ -156,7 +160,7 @@ export default {
     return {
       add_role: false,
       permissions: [],
-      Roles: [],
+      Departments: [],
       payload: {
         permissions: [],
         name: "",
@@ -174,11 +178,11 @@ export default {
         console.log(error);
       }
     },
-    async getRoles() {
+    async getDepartments() {
       try {
-        const res = await helpers.getRoles();
+        const res = await helpers.getDepartments();
         console.log(res);
-        this.Roles = res;
+        this.Departments = res;
       } catch (error) {
         console.log(error);
       }
@@ -199,7 +203,7 @@ export default {
   },
   async created() {
     this.getPermissions();
-    this.getRoles();
+    this.getDepartments();
   },
 };
 </script>
