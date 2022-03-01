@@ -29,6 +29,7 @@
     }
     #main {
         margin-left: unset;
+        padding: 1rem;
     }
     .larger-screens {
         display: none;
@@ -64,4 +65,61 @@
     .app-drawer-menu li .router-link-exact-active::after {
         display: none;
     }
+
+    /* Messages */
+    .center .form-input {
+        padding-right: 20px;
+    }
+    .center .form-input label {
+        padding: 5px .3rem;
+        font-size: 12px;
+    }
+    .send_document_wrap {
+        margin-top: -7px;
+    }
+    .send_document_wrap button {
+        padding: 5px .3rem;
+    font-size: 12px;
+    }
+
+
+    /* Setting Header */
+    .role_wrap .roles_header h5 {
+        font-size: 15px;
+    }
+    .role_wrap .create__role {
+        font-size: 10px;
+        padding: 5px 20px;
+        margin-top: 10px;
+    }
+    .view_all_roles_section h5 {
+        font-size: 11px;
+    }
+    .list_section li {
+        font-size: 10px;
+    }
+    .add-role-dropdown .dropdown-toggle {
+        padding: 0.3rem;
+        width: 100%;
+        border: none;
+        border-radius: 5px;
+        font-size: 0.7rem;
+    }
+    .add-role-dropdown .dropdown-menu {
+        min-width: 35vw;
+    }
+
+    /* Meeting Room */
+    /* .chat_hearder_wrap h6 {
+        font-size: 13px;
+    }
+    .chat_hearder_wrap .span_wrap .text-white {
+        font-size: 20px;
+        cursor: pointer;
+    }
+    .chat_wrap img {
+        width: 100%;
+        height: 100%;
+    } */
 }
+
