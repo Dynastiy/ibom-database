@@ -35,7 +35,7 @@
                         <router-link to="/dashboard/staffs">
                         <ion-icon name="people"></ion-icon>
                         <span class="ml-3">
-                            Staffs
+                            Staff
                         </span>
                         </router-link>
                     </li>
