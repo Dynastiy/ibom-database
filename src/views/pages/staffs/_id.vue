@@ -1,16 +1,16 @@
 <template>
   <div>
-    <div class="single__user mt-4">
-      <section class="left__side">
-        <div class="router_wrap">
-          <router-link class="link" to="/dashboard/departments">
+    <div class="router_wrap" @click="back">
+         
             <ion-icon name="backspace"
-          /></router-link>
+          />
         </div>
 
+    <div class="single__user mt-4">
+      <section class="left__side">
         <div class="top">
           <div class="">
-            <img class="bg-white" src="@/assets/img/avatar_image.webp" />
+            <img v-if="staff.profile" :src="baseUrl+staff.profile.profile_photo+'?'+Date.now()" />
           </div>
           <div class="mb-4">
             <div class="d-flex align-items-end mb-4">
@@ -98,7 +98,7 @@
             <div class="row">
               <div class="mt-4 col-md-6">
                 <h6 class="mb-1">email</h6>
-                <p v-if="staff.profile">{{ staff.profile.email }}</p>
+                <p v-if="staff.profile">{{ staff.email }}</p>
               </div>
               <div class="mt-4 col-md-6">
                 <h6 class="mb-1">phone number</h6>
@@ -113,20 +113,20 @@
                 <p v-if="staff.profile">{{ staff.profile.marital_status }}</p>
               </div>
               <div class="mt-4 col-md-6">
-                <h6 class="mb-1">religion</h6>
-                <p>Grade 13</p>
+                <h6 class="mb-1"> religion </h6>
+                <p v-if="staff.profile">{{ staff.profile.religion }}</p>
               </div>
               <div class="mt-4 col-md-6">
-                <h6 class="mb-1">state of origin</h6>
-                <p>Grade 13</p>
+                <h6 class="mb-1">state of origin </h6>
+                <p v-if="staff.profile"> {{ staff.profile.state_of_origin }}</p>
               </div>
               <div class="mt-4 col-md-6">
-                <h6 class="mb-1">l.g.a</h6>
-                <p>Grade 13</p>
+                <h6 class="mb-1"> lga </h6>
+                <p v-if="staff.profile">{{ staff.profile.lga }}</p>
               </div>
               <div class="mt-4 col-md-6">
-                <h6 class="mb-1">next of origin</h6>
-                <p>Grade 13</p>
+                <h6 class="mb-1">next of kin</h6>
+                <p v-if="staff.profile">{{ staff.profile.next_of_kin }}</p>
               </div>
             </div>
           </div>
@@ -138,15 +138,15 @@
           >
             <div class="mt-4">
               <h6 class="mb-1">bank name</h6>
-              <p>Grade 13</p>
+              <p v-if="staff.bank_details"> {{staff.bank_details.bank_name }} </p>
             </div>
             <div class="mt-4">
               <h6 class="mb-1">account name</h6>
-              <p>Grade 13</p>
+              <p v-if="staff.bank_details"> {{staff.bank_details.account_name}} </p>
             </div>
             <div class="mt-4">
               <h6 class="mb-1">account number</h6>
-              <p>Grade 13</p>
+              <p v-if="staff.bank_details"> {{ staff.bank_details.account_no }} </p>
             </div>
           </div>
         </div>
@@ -168,6 +168,7 @@ export default {
     return {
       staff: {},
       id: this.$route.params.id,
+      baseUrl: "https://ibomdemo.africanapp.store/",
       permissions: [],
     };
   },
@@ -182,6 +183,9 @@ export default {
         console.log(error);
       }
     },
+    back(){
+      this.$router.go(-1)
+    }
   },
   async created() {
     this.getStaff();

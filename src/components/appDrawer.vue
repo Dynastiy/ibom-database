@@ -31,7 +31,7 @@
                         </span>
                         </router-link>
                     </li>
-                    <li>
+                    <li v-show="dataObj.name === 'Admin' ">
                         <router-link to="/dashboard/staffs">
                         <ion-icon name="people"></ion-icon>
                         <span class="ml-3">
@@ -39,7 +39,7 @@
                         </span>
                         </router-link>
                     </li>
-                    <li>
+                    <li v-show="dataObj.name === 'Admin' ">
                         <router-link to="/dashboard/departments">
                         <ion-icon name="people"></ion-icon>
                         <span class="ml-3">
@@ -90,7 +90,13 @@
 
 <script>
 import Swal from 'sweetalert2'
+import helpers from '@/helpers/index.js'
 export default {
+    data(){
+        return {
+            dataObj: {},
+        }
+    },
     methods:{
         logout() {
       this.$store.dispatch('logout');
@@ -100,7 +106,15 @@ export default {
           'warning'
         )
       this.$router.push('/signin');
-    }
-    }
+    },
+    async getUser() {
+      let res = await helpers.getUser();
+      this.dataObj = res.role;
+      console.log(res.role);
+    },
+  },
+    async created(){
+      this.getUser();
+  }
 }
 </script>

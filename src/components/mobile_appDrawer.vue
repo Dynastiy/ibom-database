@@ -61,13 +61,13 @@
               <span class="ml-3"> My Office </span>
             </router-link>
           </li>
-          <li>
+          <li v-show="dataObj.name ==='Admin' ">
             <router-link to="/dashboard/staffs">
               <ion-icon name="people"></ion-icon>
-              <span class="ml-3"> Staffs </span>
+              <span class="ml-3"> Staff</span>
             </router-link>
           </li>
-          <li>
+          <li v-show="dataObj.name ==='Admin' ">
             <router-link to="/dashboard/departments">
               <ion-icon name="people"></ion-icon>
               <span class="ml-3"> Departments </span>
@@ -109,6 +109,7 @@
 </template>
 
 <script>
+import helpers from '@/helpers/index.js'
 import Swal from "sweetalert2";
 import notifications from "@/components/notifications/index.vue";
 export default {
@@ -117,7 +118,7 @@ export default {
   },
   data(){
       return{
-
+        dataObj: {},
       }
   },
   methods: {
@@ -126,6 +127,14 @@ export default {
       Swal.fire("Bye!", "Logged out!", "warning");
       this.$router.push("/signin");
     },
+   async getUser() {
+      let res = await helpers.getUser();
+      this.dataObj = res.role;
+      console.log(res.role);
+    },
+  },
+    async created(){
+      this.getUser();
   },
     mounted(){
       const toggller = document.getElementById("tog");

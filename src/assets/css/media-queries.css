@@ -69,4 +69,10 @@
         width: 100%;
         padding: 1.5rem;
     }
+    .single__user {
+        display: unset;
+    }
+    .right__side {
+        margin-top: 0.8rem;
+    }
 }
