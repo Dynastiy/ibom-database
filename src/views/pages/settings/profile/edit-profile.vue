@@ -8,9 +8,10 @@
           <div class="row">
             <div class="col-md-12">
               <div class="d-flex align-items-center" style="gap:30px">
-                <div class="profile_photo" >
+                <div class="profile_photo">
                   <img
-                    :src="baseUrl + dataObj.profile.profile_photo"
+                    v-if=" dataObj.profile"
+                    :src="baseUrl + dataObj.profile.profile_photo+'?'+Date.now()"
                     alt=""
                     srcset=""
                   />
@@ -20,7 +21,8 @@
                     <div class="preview">
                       <img id="file-ip-1-preview" />
                     </div>
-                    <label for="file-ip-1">Upload</label>
+                    <label for="file-ip-1" id="update">Update Photo</label>
+                    
                     <input
                       type="file"
                       id="file-ip-1"
@@ -28,6 +30,7 @@
                       @change="showPreview($event)"
                     />
                   </div>
+                  <div class="upload" id="upload-file" @click="uploadPhoto"><button >Upload</button></div>
                 </div>
               </div>
             </div>
@@ -191,7 +194,7 @@
                     v-for="item of lgas"
                     :key="item.id"
                     class="colour"
-                    id="selectLga"
+                    :value="item.name"
                   >
                     {{ item.name }}
                   </option>
@@ -329,7 +332,6 @@
                     v-for="item in banks_list"
                     :key="item.id"
                     :value="item.name"
-                    id="selectCountry"
                   >
                     {{ item.name }}
                   </option>
@@ -368,8 +370,11 @@ export default {
       roles: "",
       departments: "",
       banks_list: "",
+      upload: false,
+      profile_photo: '',
       dataObj: {
         first_name: "",
+
         last_name: "",
         email: "",
         profile: {
@@ -382,7 +387,6 @@ export default {
           lga: "",
           next_of_kin: "",
           address: "",
-          profile_photo: "",
         },
         department: {
           name: "",
@@ -402,7 +406,6 @@ export default {
     getState() {
       var stateOptions = document.getElementById("selectState");
       var selOption = stateOptions.options[stateOptions.selectedIndex].value;
-      // console.log(selOption);
       this.selState = selOption;
       this.getlgas();
     },
@@ -428,15 +431,38 @@ export default {
     },
     showPreview($event){
         var input = event.target;
-        this.dataObj.profile.profile_photo = input.files[0];
-        console.log(this.dataObj.profile.profile_photo);
+        this.profile_photo = input.files[0];
+        // console.log(this.profile_photo);
         if($event.target.files.length > 0){
           var src = URL.createObjectURL(event.target.files[0]);
           var preview = document.getElementById("file-ip-1-preview");
           preview.src = src;
           preview.style.display = "block";
+          var updatePhoto = document.getElementById("update");
+          var uploadPhoto = document.getElementById("upload-file")
+          updatePhoto.style.display= "none"
+          uploadPhoto.style.display= "block"
         }
       },
+      async uploadPhoto(){
+             const formData = new FormData();
+            //  console.log(this.profile_photo);
+              formData.append("file", this.profile_photo);
+              try {
+                let res = await helpers.updateProfile(formData);
+                console.log(res);
+                var preview = document.getElementById("file-ip-1-preview");
+                preview.style.display = "none";
+                var updatePhoto = document.getElementById("update");
+                var uploadPhoto = document.getElementById("upload-file")
+                updatePhoto.style.display= "block"
+                uploadPhoto.style.display= "none"
+                this.getUser();
+                this.$router.go();
+              } catch (error) {
+                console.log(error);
+              }
+          },
 
     async updateProfile() {
       this.loading = true;
@@ -451,7 +477,7 @@ export default {
       formData.append("religion", this.dataObj.profile.religion);
       formData.append("state_of_origin", this.dataObj.profile.state_of_origin);
       formData.append("lga", this.dataObj.profile.lga);
-      formData.append("file", this.dataObj.profile.profile_photo);
+      // formData.append("file", this.dataObj.profile.profile_photo);
       formData.append("next_of_kin", this.dataObj.profile.next_of_kin);
       formData.append("address", this.dataObj.profile.address);
       formData.append("account_no", this.dataObj.bank_detail.account_no);
@@ -471,6 +497,7 @@ export default {
     this.getStates();
     this.getUser();
     this.getBanks();
+    console.log(this.dataObj.profile.profile_photo);
   },
 };
 </script>
