@@ -76,5 +76,14 @@ export default {
     async getTasks() {
         const response = await axios.get(url + 'tasks')
         return response.data.data
-    }
+    },
+
+    // async deleteDepartment(id) {
+    //     const response = await axios.post(`${url}admin/departments/${id}`)
+    //     return response.data.data
+    // },
+    // async updateDepartment(updateDeparmentInfo) {
+    //     const response = await axios.post(`${url}admin/departments/${id}`, updateDeparmentInfo)
+    //     return response.data.data
+    // }
 };

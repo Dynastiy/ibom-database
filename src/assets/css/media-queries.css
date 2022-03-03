@@ -69,4 +69,27 @@
         width: 100%;
         padding: 1.5rem;
     }
+
+    /* Compose Message Section */
+    .message_wrap label, .message_wrap .form-control {
+        font-size: 13px;
+    }
+
+    /* Setting */
+    .single__user {
+        display: unset;
+    }
+
+    /* Meeting Room */
+    .meeting-room {
+        display: unset;
+    }
+    .chat-area .chat_content {
+        padding-top: 0;
+        padding: 50px;
+    }
+    .chat_area_section .write_up_wrap p {
+        color: var(--accent-text-color);
+        font-size: 14px;
+    }
 }
