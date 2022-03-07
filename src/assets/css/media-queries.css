@@ -50,7 +50,6 @@
         margin-right: 1rem;
         padding: 0.3rem 1rem;
         border-radius: 30px;
-        /* padding: 2rem; */
         font-size: 0.8rem;
     }
     .add-department-modal-body {
@@ -84,4 +83,10 @@
         font-size: 12px;
     }
     
+    .signin__page {
+        background-position: center center;
+    }
+    .update_password_container form {
+        width: 80%;
+    }
 }

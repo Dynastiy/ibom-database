@@ -16,7 +16,6 @@ html {
 :root {
     --primary-color4: #B25000;
     --primary-color3: #CB5B00;
-    --primary-color2: #E56700;
     --primary-color1: #E56700;
     --secondary-color1: #00A44E;
     --secondary-color2: #009446;
@@ -36,6 +35,9 @@ html {
     --description-color: #F2F1F1;
     --heading-text-color: #F6F6F6;
     --light: #fff;
+    --pending: #e567002c;
+    --approved: #0094454b;
+    --declined: #ff000048;
     --primary-font: 'Inter', sans-serif;
 }
 
@@ -121,7 +123,7 @@ p {
 /* Signin Page  */
 
 .signin__page {
-    /* background: url("../img/login__bg.svg"); */
+    background: url("../img/bg.jpg");
     background-color: rgba(0, 0, 0, 0.7);
     background-blend-mode: overlay;
     min-height: 100vh;
@@ -655,12 +657,12 @@ input::-webkit-inner-spin-button {
     padding: 0.6rem;
     display: flex;
     gap: 20px;
-    background-color: var(--inactive-text);
+    background-color: var(--nav-color);
     border-bottom: 1px solid var(--dark-background);
 }
 
 .my-office-sidemenu .content:hover {
-    background-color: var(--inactive-text2);
+    background-color: var(--black1);
     cursor: pointer;
 }
 
@@ -672,8 +674,9 @@ input::-webkit-inner-spin-button {
 }
 
 .my-office-sidemenu h6 {
-    color: var(--dark-background);
+    color: var(--accent-text-color);
     font-weight: bold;
+    font-size: 0.8rem;
 }
 
 .my-office-sidemenu .description {
@@ -682,14 +685,79 @@ input::-webkit-inner-spin-button {
 }
 
 .my-office-sidemenu .time__stamp {
-    color: var(--dark-background);
+    color: var(--inactive-text2);
     font-size: 0.7rem;
 }
 
 .my-office-sidemenu .main__text {
-    color: var(--dark-background);
-    font-size: 0.8rem;
+    color: var(--accent-text-color);
+    font-size: 0.7rem;
     margin-top: 0.6rem;
+}
+
+.sender-icon {
+    width: 30px;
+    height: 30px;
+    /* background-color: red; */
+    color: var(--accent-text-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.a,
+.b,
+.c,
+.d,
+.e,
+.A,
+.B,
+.C,
+.D,
+.E {
+    background-color: #FF0000 !important;
+}
+
+.f,
+.g,
+.h,
+.i,
+.j,
+.J,
+.I,
+.H,
+.G,
+.F {
+    background-color: #FFB20F;
+}
+
+.K,
+.L,
+.M,
+.N,
+.O,
+.P,
+.m,
+.n,
+.o,
+.p,
+.k,
+.l {
+    background-color: #000;
+}
+
+.q,
+.r,
+.s,
+.t,
+.u,
+.Q,
+.R,
+.S,
+.T,
+.U {
+    background-color: #01445f;
 }
 
 hr {
@@ -1383,4 +1451,138 @@ hr {
 
 #upload-file {
     display: none;
+}
+
+.ul__search {
+    position: absolute;
+    /* bottom: -10%; */
+    left: 23%;
+    width: 30%;
+    z-index: 999;
+    transition: 2s;
+}
+
+.search__box {
+    position: relative;
+}
+
+.ul__search li {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.138);
+    padding: 0.3rem 0;
+    cursor: pointer;
+}
+
+.ul__search li:hover {
+    background-color: var(--accent-color-transparent);
+}
+
+.ul__search li a {
+    color: #000;
+    font-size: 0.8rem;
+    display: block;
+    padding: 0.5rem;
+}
+
+.ul__search li a:hover {
+    text-decoration: none;
+    background: #fae4ba25;
+}
+
+.back__icon ion-icon:hover {
+    background-color: var(--accent-color-transparent);
+    padding: 0.5rem;
+    /* display: flex; */
+    /* align-items: center;
+    justify-content: center; */
+    /* width: 20px;
+    height: 20px; */
+    border-radius: 50%;
+}
+
+
+/* status Styles */
+
+.status .pending,
+.status .approved,
+.status .rejected {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    padding: 0.1rem;
+    border-radius: 5px;
+}
+
+.status .pending {
+    background-color: var(--pending);
+    color: var(--primary-color1);
+    border: 1px solid var(--pending);
+}
+
+.status .approved {
+    background-color: var(--approved);
+    color: var(--secondary-color1);
+    border: 1px solid var(--approved);
+}
+
+.status .rejected {
+    background-color: var(--declined);
+    color: #ff0000;
+    border: 1px solid var(--declined);
+}
+
+.update_password .upload button,
+.update_password_container button {
+    padding: 0.3rem 1.7rem;
+    text-align: center;
+    margin: 0;
+    background: var(--accent-color);
+    color: #fff !important;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.update_password_container {
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.update_password_container form {
+    background: var(--light);
+    padding: 3rem;
+    width: 30%;
+}
+
+.update_password_container input {
+    width: 100%;
+    padding: 0.4rem;
+    border: none;
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.125);
+    border-radius: 5px;
+}
+
+.update_password_container input:focus {
+    outline: 1px solid var(--secondary-color);
+    /* width: 100%; */
+}
+
+.update_password_container .view-btn {
+    width: 100%;
+}
+
+.update_password_container ion-icon {
+    font-size: 24px;
+    color: var(--accent-color);
+    cursor: pointer;
 }

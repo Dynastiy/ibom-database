@@ -79,8 +79,13 @@ export default {
         this.$store.dispatch("login", { token, user, fully_onboarded });
         this.loading = false;
       } catch (error) {
+<<<<<<< HEAD
+        var error_msg = error.response.data.data;
+        Swal.fire(`Error`, error_msg, "warning");
+=======
         Swal.fire("Error", "Password or Email Not Correct!", "warning");
         console.log(error);
+>>>>>>> afd46f6b5cd44fa24aa4e8424d3ea11b946ddcfa
         this.email = "";
         this.password = "";
         this.loading = false;

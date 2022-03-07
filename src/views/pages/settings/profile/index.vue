@@ -229,7 +229,16 @@
             <div class="col-md-6">
               <div class="form-group  mt-2">
                 <label for="exampleFormControlSelect1" class="py-2">Role</label>
+                 <input
+                v-if="dataObj.role === null "
+                  type="text"
+                  class="form-control"
+                  placeholder="No role Assigned"
+                  required
+                  readonly
+                />
                 <input
+                v-else
                   type="text"
                   class="form-control"
                   placeholder="Role"
@@ -237,6 +246,7 @@
                   v-model="dataObj.role.name"
                   readonly
                 />
+               
               </div>
             </div>
             <div class="col-md-6">

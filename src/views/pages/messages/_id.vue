@@ -6,7 +6,7 @@
         <div
           class="my-office-top d-flex align-items-center justify-content-between"
         >
-          <div>
+          <div @click="goBack" class="back__icon">
               <ion-icon name="arrow-back"></ion-icon>
           </div>
           <div>
@@ -24,12 +24,12 @@
                 <ion-icon name="more"></ion-icon>
               </button>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Forward</a>
+                <a class="dropdown-item" href="#" @click="forward">Forward</a>
                 <a class="dropdown-item" href="#">Reply</a>
                 <a class="dropdown-item" href="#">Sign</a>
                 <a class="dropdown-item" href="#">Stamp</a>
-                <a class="dropdown-item" href="#">Approve</a>
-                <a class="dropdown-item" href="#">Decline</a>
+                <a class="dropdown-item" href="#" @click="approve">Approve</a>
+                <a class="dropdown-item" href="#" @click="reject">Decline</a>
               </div>
             </div>
           </div>
@@ -40,39 +40,25 @@
       <!-- Body of Message or Task  -->
       <div class="mt-4">
         <div class="content">
-          <img
-            src="https://darylh.com/wp-content/uploads/2017/05/Profile-Picture-Square.jpg"
-            alt=""
-          />
+          <div class="sender-icon" v-if="dataObj.sender_name" :class="[dataObj.sender_name.charAt(0)]"> {{ dataObj.sender_name.charAt(0) }} </div>
           <div class="w-100">
             <div class="d-flex align-items-center justify-content-between">
-              <h6 class="m-0">Name of Sender</h6>
-              <p class="time__stamp">12:20PM</p>
+              <h6 class="m-0"> {{ dataObj.sender_name }} </h6>
+              <p class="time__stamp"> {{ dataObj.due_date }} </p>
+
             </div>
             <div class="mt-1">
-              <div class="d-flex align-items-center justify-content-between">
-                <p class="small description">to: emmanuel77michael</p>
+              <div class="d-flex align-items-center" style="gap:10px">
+                <p class="small description">ref:  {{ dataObj.reference_id }} </p>
+                <div class="status">
+                <div class="approved" v-if="dataObj.status === 'approved' ">Approved</div>
+                <div class="rejected" v-else-if="dataObj.status  === 'rejected' ">Rejected</div>
+                <div class="pending" v-else>Pending</div>
               </div>
-              <h5 class="mt-3">Heading or Description of Task or Assignment</h5>
+              </div>
+              <h5 class="mt-3"> {{ dataObj.title }} </h5>
               <p class="main__text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
-                odit aut aliquid nam dignissimos ducimus tempore totam est sunt,
-                quo magni doloribus vitae sed soluta nemo vero maiores
-                consequuntur veritatis. Odit rem repellendus quisquam cupiditate
-                sed? Nostrum odit molestiae laboriosam quia ullam, quis impedit
-                deserunt voluptate atque illo cum laborum et, consectetur
-                similique? Quia obcaecati, ipsa amet quo officia laboriosam?
-                Omnis, odit blanditiis quia quos in ipsum. Dolorum doloribus
-                excepturi quam vero saepe voluptatem fugiat quisquam dignissimos
-                ad quis, error numquam molestias, tempora esse iusto consequatur
-                laudantium ullam deleniti a. Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Doloribus voluptas harum quo,
-                dolor dicta dolorem iste, est atque sint fugit odio molestiae
-                nulla neque quae at quia incidunt laborum animi. Et praesentium
-                deleniti dignissimos, aliquid voluptate dicta odio ea doloribus
-                distinctio facilis atque quaerat aut beatae eum magnam numquam
-                nulla voluptatibus sunt expedita? Nesciunt at non illum officiis
-                nemo itaque.
+                {{ dataObj.description }}
               </p>
             </div>
           </div>
@@ -81,3 +67,59 @@
     </div>
   </div>
 </template>
+
+<script>
+import helpers from '@/helpers/index.js'
+export default {
+  data(){
+    return{
+      dataObj: '',
+      id: this.$route.params.id
+    }
+  },
+  methods:{
+    async getTask(){
+      try {
+        let res = await helpers.getTasksById(this.id);
+        console.log(res);
+        this.dataObj = res
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async approve(){
+      try {
+        let res = await helpers.approve(this.id)
+        console.log(res);
+        this.getTask();
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async reject(){
+      try {
+        let res = await helpers.decline(this.id)
+        console.log(res);
+        this.getTask();
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async forward(){
+      try {
+        let res = await helpers.forward(this.id)
+        console.log(res);
+        this.getTask();
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    goBack(){
+      this.$router.go(-1)
+    }
+  },
+  async created(){
+    this.getTask();
+  }
+}
+</script>

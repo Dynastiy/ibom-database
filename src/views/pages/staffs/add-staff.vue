@@ -154,14 +154,16 @@ export default {
   methods:{
     async getRoles(){
       let res = await helpers.getRoles();
-      const roles = res.roles
-      this.$store.dispatch("addRoles", { roles });
+      // const roles = res.roles
+      // this.$store.dispatch("addRoles", { roles });
       this.roles = res;
+      // console.log(res);
     },
     async getDepartments(){
       let res = await helpers.getDepartments();
-      const departments = res.departments
-      this.$store.dispatch("addDepartments", { departments });
+      // const departments = res.departments
+      // this.$store.dispatch("addDepartments", { departments });
+      // console.log(res);
       this.departments = res;
     },
     async onboardStaff(){
@@ -179,8 +181,8 @@ export default {
     }
   },
   async created(){
-    // this.getRoles()
-    // this.getDepartments()
+    this.getRoles()
+    this.getDepartments()
   }
 }
 </script>
