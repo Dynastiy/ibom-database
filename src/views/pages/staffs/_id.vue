@@ -1,16 +1,17 @@
 <template>
   <div>
     <div class="router_wrap" @click="back">
-         
-            <ion-icon name="backspace"
-          />
-        </div>
+      <ion-icon name="backspace" />
+    </div>
 
     <div class="single__user mt-4">
       <section class="left__side">
         <div class="top">
           <div class="">
-            <img v-if="staff.profile" :src="baseUrl+staff.profile.profile_photo+'?'+Date.now()" />
+            <img
+              v-if="staff.profile"
+              :src="baseUrl + staff.profile.profile_photo + '?' + Date.now()"
+            />
           </div>
           <div class="mb-4">
             <div class="d-flex align-items-end mb-4">
@@ -113,15 +114,15 @@
                 <p v-if="staff.profile">{{ staff.profile.marital_status }}</p>
               </div>
               <div class="mt-4 col-md-6">
-                <h6 class="mb-1"> religion </h6>
+                <h6 class="mb-1">religion</h6>
                 <p v-if="staff.profile">{{ staff.profile.religion }}</p>
               </div>
               <div class="mt-4 col-md-6">
-                <h6 class="mb-1">state of origin </h6>
-                <p v-if="staff.profile"> {{ staff.profile.state_of_origin }}</p>
+                <h6 class="mb-1">state of origin</h6>
+                <p v-if="staff.profile">{{ staff.profile.state_of_origin }}</p>
               </div>
               <div class="mt-4 col-md-6">
-                <h6 class="mb-1"> lga </h6>
+                <h6 class="mb-1">lga</h6>
                 <p v-if="staff.profile">{{ staff.profile.lga }}</p>
               </div>
               <div class="mt-4 col-md-6">
@@ -138,19 +139,25 @@
           >
             <div class="mt-4">
               <h6 class="mb-1">bank name</h6>
-              <p v-if="staff.bank_details"> {{staff.bank_details.bank_name }} </p>
+              <p v-if="staff.bank_details">
+                {{ staff.bank_details.bank_name }}
+              </p>
             </div>
             <div class="mt-4">
               <h6 class="mb-1">account name</h6>
-              <p v-if="staff.bank_details"> {{staff.bank_details.account_name}} </p>
+              <p v-if="staff.bank_details">
+                {{ staff.bank_details.account_name }}
+              </p>
             </div>
             <div class="mt-4">
               <h6 class="mb-1">account number</h6>
-              <p v-if="staff.bank_details"> {{ staff.bank_details.account_no }} </p>
+              <p v-if="staff.bank_details">
+                {{ staff.bank_details.account_no }}
+              </p>
             </div>
           </div>
         </div>
-        <div class="mt-3">
+        <div class="mt-3 d-flex justify-content-center">
           <button class="activate">Activate Staff</button>
           <button class="de_activate ml-1">Deactivate User</button>
           <button class="ban ml-1">Ban Staff</button>
@@ -183,9 +190,9 @@ export default {
         console.log(error);
       }
     },
-    back(){
-      this.$router.go(-1)
-    }
+    back() {
+      this.$router.go(-1);
+    },
   },
   async created() {
     this.getStaff();

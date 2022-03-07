@@ -75,4 +75,13 @@
     .right__side {
         margin-top: 0.8rem;
     }
+
+    /* Individual Staff */
+    .activate, .de_activate, .ban, .unban {
+        
+        padding: 2px 10px;
+        
+        font-size: 12px;
+    }
+    
 }
