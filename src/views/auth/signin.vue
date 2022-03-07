@@ -77,7 +77,8 @@ export default {
         this.$store.dispatch("login", { token, user, fully_onboarded });
         this.loading = false;
       } catch (error) {
-        console.log(error);
+        var error_msg = error.response.data.data;
+        Swal.fire(`Error`, error_msg, "warning");
         this.email = "";
         this.password = "";
         this.loading = false;

@@ -2,8 +2,8 @@
     <div>
        <div class="settings__header">
             <router-link to="/dashboard/settings">Profile</router-link>
-            <router-link v-show="role.name ==='Admin' " to="/dashboard/settings/Roles">Roles</router-link>
-            <router-link v-show="role.name ==='Admin' " to="/dashboard/settings/Departments">Departments</router-link>
+            <router-link v-show="dataObj.name === 'Admin' " to="/dashboard/settings/Roles">Roles</router-link>
+            <router-link v-show="dataObj.name === 'Admin' " to="/dashboard/settings/Departments">Departments</router-link>
        </div>
        <hr>
     </div>
@@ -14,7 +14,7 @@ import helpers from '@/helpers/index.js'
 export default {
     data(){
         return{
-            roles: {}
+            dataObj: {}
         }
     },
     methods:{

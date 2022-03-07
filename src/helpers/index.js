@@ -76,5 +76,37 @@ export default {
     async getTasks() {
         const response = await axios.get(url + 'tasks')
         return response.data.data
-    }
+    },
+    async getTasksById(id) {
+        const response = await axios.get(`${url}tasks/${id}`)
+        return response.data.data
+    },
+    async deactivateUser(payload) {
+        const response = await axios.post(`${url}admin/users/deactivate`, payload)
+        return response.data.data
+    },
+    async activateUser(payload) {
+        const response = await axios.post(`${url}admin/users/activate`, payload)
+        return response.data.data
+    },
+    async banUser(payload) {
+        const response = await axios.post(`${url}admin/user/ban`, payload)
+        return response.data.data
+    },
+    async unbanUser(id) {
+        const response = await axios.post(`${url}admin/user/${id}/unban`)
+        return response.data.data
+    },
+    async approve(id) {
+        const response = await axios.post(`${url}tasks/${id}/approve`)
+        return response.data.data
+    },
+    async decline(id) {
+        const response = await axios.post(`${url}tasks/${id}/reject`)
+        return response.data.data
+    },
+    async forward(id) {
+        const response = await axios.post(`${url}tasks/${id}/forward`)
+        return response.data.data
+    },
 };

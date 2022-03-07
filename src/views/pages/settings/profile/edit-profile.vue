@@ -7,30 +7,45 @@
         <form action="" @submit.prevent="updateProfile">
           <div class="row">
             <div class="col-md-12">
-              <div class="d-flex align-items-center" style="gap:30px">
-                <div class="profile_photo">
-                  <img
-                    v-if=" dataObj.profile"
-                    :src="baseUrl + dataObj.profile.profile_photo+'?'+Date.now()"
-                    alt=""
-                    srcset=""
-                  />
-                </div>
-                <div class="center">
-                  <div class="form-input2">
-                    <div class="preview">
-                      <img id="file-ip-1-preview" />
-                    </div>
-                    <label for="file-ip-1" id="update">Update Photo</label>
-                    
-                    <input
-                      type="file"
-                      id="file-ip-1"
-                      accept="image/*"
-                      @change="showPreview($event)"
+              <div class="d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center" style="gap: 30px">
+                  <div class="profile_photo">
+                    <img
+                      v-if="dataObj.profile"
+                      :src="
+                        baseUrl +
+                        dataObj.profile.profile_photo +
+                        '?' +
+                        Date.now()
+                      "
+                      alt=""
+                      srcset=""
                     />
                   </div>
-                  <div class="upload" id="upload-file" @click="uploadPhoto"><button >Upload</button></div>
+                  <div class="center">
+                    <div class="form-input2">
+                      <div class="preview">
+                        <img id="file-ip-1-preview" />
+                      </div>
+                      <label for="file-ip-1" id="update">Update Photo</label>
+
+                      <input
+                        type="file"
+                        id="file-ip-1"
+                        accept="image/*"
+                        @change="showPreview($event)"
+                      />
+                    </div>
+                    <div class="upload" id="upload-file" @click="uploadPhoto">
+                      <button>Upload</button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="update_password">
+                  <div class="upload">
+                    <button @click="update_password = !update_password">Update Password</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -245,7 +260,14 @@
                 <label for="exampleFormControlSelect1" class="py-2"
                   >Department</label
                 >
+                 <input
+                v-if="dataObj.department === null "
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter your Department"
+                />
                 <input
+                v-else
                   type="text"
                   class="form-control"
                   placeholder="Department"
@@ -297,7 +319,14 @@
             <div class="col-md-6">
               <div class="form-group mt-2">
                 <label for="" class="py-2">Account Name</label>
+                 <input
+                v-if="dataObj.bank_detail === null "
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter your account name"
+                />
                 <input
+                v-else
                   type="text"
                   class="form-control"
                   placeholder="Account Name"
@@ -309,7 +338,14 @@
               <div class="form-group mt-2">
                 <label for="" class="py-2">Account Number</label>
                 <input
+                v-if="dataObj.bank_detail === null "
                   type="text"
+                  class="form-control"
+                  placeholder="Enter your account number"
+                />
+                <input
+                v-else
+                  type="tel"
                   class="form-control"
                   placeholder="Enter your account number"
                   v-model="dataObj.bank_detail.account_no"
@@ -320,6 +356,24 @@
               <div class="form-group mt-2">
                 <label for="exampleFormControlSelect1" class="py-2">Bank</label>
                 <select
+                v-if="dataObj.bank_detail  === null "
+                  class="form-control option-class select"
+                  id="exampleFormControlSelect1"
+                >
+                  <option class="colour" value="" id="selectCountry">
+                    ---
+                  </option>
+                  <option
+                    class="colour"
+                    v-for="item in banks_list"
+                    :key="item.id"
+                    :value="item.name"
+                  >
+                    {{ item.name }}
+                  </option>
+                </select>
+                <select
+                v-else
                   class="form-control option-class select"
                   id="exampleFormControlSelect1"
                   v-model="dataObj.bank_detail.bank_name"
@@ -352,6 +406,43 @@
         </form>
       </div>
     </div>
+
+  <!-- Update Password Modal  -->
+    <div class="update_password_container animate__animated animate__fadeIn" v-show="update_password" >
+        
+        <form action="" class="shadow-lg" >
+           <div class="d-flex justify-content-between mb-4 ">
+             <h5 class="font-weight-bold ">Update Password</h5>
+              <div class="" @click="update_password = !update_password">
+                <ion-icon name="close"></ion-icon>
+              </div>
+              
+           </div>
+          <div class="mb-3">
+            <label for="" class="small">Old Password</label> <br />
+            <input type="text" name="" v-model="credentials.old_password" id="" />
+            <!-- <p class="small text-danger" v-for="error in errors.email" :key="error.id"> *{{ error }} </p> -->
+          </div>
+          <div class="mb-3">
+            <label for="" class="small">New Password</label> <br />
+            <input type="text" name="" v-model="credentials.password" id="" />
+            <!-- <p class="small text-danger" v-for="error in errors.email" :key="error.id"> *{{ error }} </p> -->
+          </div>
+          <div class="mb-4">
+            <label for="" class="small">Confirm Password</label> <br />
+            <input type="text" name="" v-model="credentials.password_confirmation" id="" />
+            <!-- <p class="small text-danger" v-for="error in errors.email" :key="error.id"> *{{ error }} </p> -->
+          </div>
+          <div>
+                <div class="d-flex justify-content-center" v-if="loading">
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+              <button v-else type="submit" class="view-btn small">Update Password</button>
+          </div>
+        </form>
+      </div>
   </div>
 </template>
 
@@ -371,10 +462,15 @@ export default {
       departments: "",
       banks_list: "",
       upload: false,
-      profile_photo: '',
+      update_password: false,
+      profile_photo: "",
+      credentials: {
+        old_password: '',
+        password: '',
+        confirm_password: '',
+      },
       dataObj: {
         first_name: "",
-
         last_name: "",
         email: "",
         profile: {
@@ -429,40 +525,40 @@ export default {
       let res = await helpers.getBanks();
       this.banks_list = res;
     },
-    showPreview($event){
-        var input = event.target;
-        this.profile_photo = input.files[0];
-        // console.log(this.profile_photo);
-        if($event.target.files.length > 0){
-          var src = URL.createObjectURL(event.target.files[0]);
-          var preview = document.getElementById("file-ip-1-preview");
-          preview.src = src;
-          preview.style.display = "block";
-          var updatePhoto = document.getElementById("update");
-          var uploadPhoto = document.getElementById("upload-file")
-          updatePhoto.style.display= "none"
-          uploadPhoto.style.display= "block"
-        }
-      },
-      async uploadPhoto(){
-             const formData = new FormData();
-            //  console.log(this.profile_photo);
-              formData.append("file", this.profile_photo);
-              try {
-                let res = await helpers.updateProfile(formData);
-                console.log(res);
-                var preview = document.getElementById("file-ip-1-preview");
-                preview.style.display = "none";
-                var updatePhoto = document.getElementById("update");
-                var uploadPhoto = document.getElementById("upload-file")
-                updatePhoto.style.display= "block"
-                uploadPhoto.style.display= "none"
-                this.getUser();
-                this.$router.go();
-              } catch (error) {
-                console.log(error);
-              }
-          },
+    showPreview($event) {
+      var input = event.target;
+      this.profile_photo = input.files[0];
+      // console.log(this.profile_photo);
+      if ($event.target.files.length > 0) {
+        var src = URL.createObjectURL(event.target.files[0]);
+        var preview = document.getElementById("file-ip-1-preview");
+        preview.src = src;
+        preview.style.display = "block";
+        // var updatePhoto = document.getElementById("update");
+        var uploadPhoto = document.getElementById("upload-file");
+        // updatePhoto.style.display= "none"
+        uploadPhoto.style.display = "block";
+      }
+    },
+    async uploadPhoto() {
+      const formData = new FormData();
+      //  console.log(this.profile_photo);
+      formData.append("file", this.profile_photo);
+      try {
+        let res = await helpers.updateProfile(formData);
+        console.log(res);
+        var preview = document.getElementById("file-ip-1-preview");
+        preview.style.display = "none";
+        // var updatePhoto = document.getElementById("update");
+        var uploadPhoto = document.getElementById("upload-file");
+        // updatePhoto.style.display= "block"
+        uploadPhoto.style.display = "none";
+        this.getUser();
+        this.$router.go();
+      } catch (error) {
+        console.log(error);
+      }
+    },
 
     async updateProfile() {
       this.loading = true;

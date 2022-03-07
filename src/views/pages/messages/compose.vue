@@ -5,10 +5,23 @@
         <form action="" @submit.prevent="assignTask">
           <div class="mb-3">
             <!-- To Recepient -->
-            <div class="d-flex" style="gap: 20px">
+            <div class="d-flex search__box" style="gap: 20px">
               <span class="sender__to">To</span>
               <!-- <input type="text" class="form-control" placeholder="" /> -->
-              <input type="text" class="form-control subject__input" v-model="dataObj.assigned_to" placeholder="Receiver" /> 
+              <!-- <input
+                type="text"
+                class="form-control subject__input"
+                v-model="dataObj.assigned_to"
+                placeholder="Receiver"
+                @keyup="getAllStarWarsPeople"
+              /> -->
+              <input
+                type="text"
+                class="form-control  subject__input"
+                v-model="assigned_name"
+                placeholder="Receiver"
+                @keyup="getAllStarWarsPeople"
+              />
               <!-- <vue-tags-input
               placeholder = "Enter Recipient(s)"
                 v-model="tag"
@@ -22,17 +35,40 @@
                   </li>
                 </ul> -->
             </div>
+             <!-- Search Results -->
+                <ul v-show="search_result" class="bg-white list-unstyled ul__search p-2 shadow-sm">
+                  <li
+                    @click="getUserId(product)"
+                    class=""
+                    v-for="product in filteredProducts"
+                    :key="product.id"
+                  >
+                    {{ product.name }}
+                  </li>
+                  <li v-show="no_results">No results found</li>
+                </ul>
+              <!-- End of search Results  -->
           </div>
           <!-- Subject -->
-          <div class=" row mb-4">
-              <div class="col-md-8">
-                <label for="">Subject</label> <br>
-                <input type="text" v-model="dataObj.title" class="form-control subject__input" placeholder="Subject" /> 
-              </div>
-              <div class="col-md-4">
-                <label for="">Due Date</label>
-                <input type="date" class="form-control subject__input" v-model="dataObj.due_date" placeholder="Choose Date" />
-              </div>
+          <div class="row mb-4">
+            <div class="col-md-8">
+              <label for="">Subject</label> <br />
+              <input
+                type="text"
+                v-model="dataObj.title"
+                class="form-control subject__input"
+                placeholder="Subject"
+              />
+            </div>
+            <div class="col-md-4">
+              <label for="">Due Date</label>
+              <input
+                type="date"
+                class="form-control subject__input"
+                v-model="dataObj.due_date"
+                placeholder="Choose Date"
+              />
+            </div>
           </div>
           <!-- Textarea -->
           <div class="form-group">
@@ -75,13 +111,15 @@
           </div>
         </form>
       </div>
+      
     </div>
   </div>
 </template>
 
 
 <script>
-import helpers from '@/helpers/index.js'
+import helpers from "@/helpers/index.js";
+import Swal from 'sweetalert2'
 // import VueTagsInput from '@johmun/vue-tags-input';
 
 export default {
@@ -90,66 +128,96 @@ export default {
   },
   data() {
     return {
-      search: '',
-      tag: '',
+      search: "",
+      assigned_name: '',
+      search_result: false,
+      tag: "",
       tags: [],
       image: null,
-      size: '',
-      filteredStaff: [],
-      dataObj:{
-        title: '',
-      description: '',
-      assigned_to: '',
-      due_date: '',
-      doc: '',
-      }
+      size: "",
+      filteredProducts: [],
+      no_results: false,
+      dataObj: {
+        title: "",
+        description: "",
+        assigned_to: "",
+        due_date: "",
+        doc: "",
+      },
     };
   },
   methods: {
-    showPreview(event){
-          var input = event.target;
-          this.image = input.files[0];
-          console.log(this.image);
-          let getImageSize = this.image.size/1024;
-          this.size = Math.round(getImageSize);
+    showPreview(event) {
+      var input = event.target;
+      this.image = input.files[0];
+      console.log(this.image);
+      let getImageSize = this.image.size / 1024;
+      this.size = Math.round(getImageSize);
     },
-    async assignTask(){
+    async assignTask() {
       try {
-        let res = await helpers.assignTask(this.dataObj)
+        let res = await helpers.assignTask(this.dataObj);
         console.log(res);
+        Swal.fire(`Done!`, `Message sent to ${this.assigned_name}`, "success");
       } catch (error) {
         console.log(error);
       }
-    }
+    },
+    async getUserId(product){
+       this.dataObj.assigned_to = product.id;
+       this.getSearchUser();
+       this.search_result = false;
+    },
+    async getSearchUser(){
+      try {
+        let res = await helpers.getStaff(this.dataObj.assigned_to);
+        console.log(res);
+        this.staff = res;
+        this.assigned_name = res.name
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    getAllStarWarsPeople() {
+     if(this.assigned_name !== ''  ){
+       const token = this.$store.getters.isLoggedIn;
+      fetch("https://ibomdemo.africanapp.store/api/v1/admin/users", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((res) => {
+          // console.log(res.data);
+          if (this.assigned_name) {
+            this.filteredProducts = res.data.users.filter((product) =>
+              product.name
+                .toLowerCase()
+                .includes(this.assigned_name.toLowerCase())
+            );
+            // console.log(this.filteredProducts);
+            if (this.filteredProducts.length === 0 ) {
+              this.no_results = true
+            }
+            else{
+              this.no_results = false
+            }
+            this.search_result = true;
+          } else {
+            this.search_result = false;
+          }
+        });
+     }
+     else{
+        this.search_result = false
+     }
+    },
   },
 };
 </script>
 
 <style scoped>
-.ul__search{
-  position: absolute;
-  /* top: 0; */
-  width: 30%;
-  z-index: 999;
-  transition: 2s;
-}
-.search__box{
-  position: relative;
-}
-.ul__search li {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-}
-.ul__search li a {
-    color: #000;
-    font-size: 0.8rem;
-    display: block;
-    padding: 0.5rem;
-}
-.ul__search  li a:hover{
-  text-decoration: none;
-  background: #fae4ba25;
-  
-}
+
 </style>
 
  

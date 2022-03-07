@@ -150,11 +150,11 @@
             </div>
           </div>
         </div>
-        <div class="mt-3">
-          <button class="activate">Activate Staff</button>
-          <button class="de_activate ml-1">Deactivate User</button>
-          <button class="ban ml-1">Ban Staff</button>
-          <button class="unban ml-1">Unban Staff</button>
+        <div class="mt-3 d-flex" style="gap: 15px">
+          <button class="activate" v-show="staff.status === 'active' ">Activate Staff</button>
+          <button class="de_activate" @click="deactivateUser"> Deactivate User </button>
+          <button class="ban"  > Ban Staff </button>
+          <button class="unban" v-show="staff.status === 'banned' ">Unban Staff</button>
         </div>
       </section>
     </div>
@@ -176,12 +176,24 @@ export default {
     async getStaff() {
       try {
         let res = await helpers.getStaff(this.id);
-        console.log(res);
+        // console.log(res);
         this.staff = res;
         this.permissions = res.role.permissions;
       } catch (error) {
         console.log(error);
       }
+    },
+    async deactivateUser(){
+      let payload = {
+        user_id: this.id
+      };
+      console.log(payload);
+        const res = await helpers.deactivateUser(payload);
+        console.log(res);
+        // this.getStaff();
+        // return res
+        
+      
     },
     back(){
       this.$router.go(-1)
