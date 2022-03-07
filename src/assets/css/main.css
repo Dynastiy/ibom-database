@@ -531,8 +531,8 @@ input::-webkit-inner-spin-button {
 .form-input label {
     display: block;
     padding: 0.5rem 1rem;
-    /* margin-top: 2rem; */
-    /* margin-bottom: 2rem; */
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     text-align: center;
     background: var(--accent-color);
     color: #fff !important;
@@ -871,6 +871,7 @@ hr {
     -o-transition: all 0.6s;
 }
 
+
 .department .create-document:hover {
     border: 1px solid var(--accent-color);
     background: transparent;
@@ -878,6 +879,21 @@ hr {
     transition: all 0.6s;
     -webkit-transition: all 0.6s;
     -o-transition: all 0.6s;
+}
+.update_button {
+    background: rgba(40, 32, 26, 0.5);
+    color: var(--accent-text-color);
+    border: none;
+    border-radius: 7px;
+    padding: 4px 12px;
+    font-size: 12px;
+    border: 1px solid var(--inactive-text2);
+    transition: all 0.6s;
+    -webkit-transition: all 0.6s;
+    -o-transition: all 0.6s;
+}
+.cursor {
+    cursor: pointer;
 }
 
 
@@ -1098,10 +1114,11 @@ hr {
     border: 1.5px solid var(--black2) !important;
     color: var(--accent-text-color);
     padding: 0.3rem 1rem;
-    width: 100%;
+    /* width: 100%; */
     border: none;
     border-radius: 5px;
     font-size: 0.75rem;
+    text-align: center;
 }
 
 .add-role-dropdown .dropdown-menu {
@@ -1120,7 +1137,6 @@ hr {
 .add-role-dropdown .select-permission input {
     margin-right: 0.5rem;
 }
-
 .remove_section li {
     text-align: center;
 }
@@ -1129,6 +1145,10 @@ hr {
     color: var(--accent-text-color);
     font-size: 24px;
     cursor: pointer;
+}
+.add-role-dropdown .dropdown {
+    width: 45%;
+    margin: 0 auto;
 }
 
 
@@ -1214,6 +1234,7 @@ hr {
     object-fit: cover;
     object-position: top;
     margin-bottom: 2.4rem;
+    border-radius: 15px;
 }
 
 .left__side .top h6 {
@@ -1364,16 +1385,16 @@ hr {
     display: none;
 }
 
-.form-input label {
+.compose_section_label .form-input label {
     display: block;
-    padding: 0.3rem 1rem;
+    padding: 0.5rem 1rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
     text-align: center;
     background: var(--accent-color);
     color: #fff !important;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     border-radius: 5px;
     cursor: pointer;
 }

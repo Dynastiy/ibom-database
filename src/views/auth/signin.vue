@@ -61,24 +61,31 @@ export default {
         console.log(response);
         const token = response.token;
         const user = response.user;
-        const fully_onboarded = response.fully_onboarded
-        if(user.name === 'Admin'){
+        const fully_onboarded = response.fully_onboarded;
+        if (user.name === "Admin") {
           this.$router.push("/");
-           Swal.fire(`Welcome ${user.name}!`, "Login Successful!", "success");
-        }
-        else if(response.fully_onboarded === 'False'){
-          this.$router.push('/update-details');
-           Swal.fire(`Welcome ${user.name}!`, "First Time User, please complete your profile!", "success");
-        }
-        else{
+          Swal.fire(`Welcome ${user.name}!`, "Login Successful!", "success");
+        } else if (response.fully_onboarded === "False") {
+          this.$router.push("/update-details");
+          Swal.fire(
+            `Welcome ${user.name}!`,
+            "First Time User, please complete your profile!",
+            "success"
+          );
+        } else {
           this.$router.push("/");
-           Swal.fire(`Welcome ${user.name}!`, "Login Successful!", "success");
+          Swal.fire(`Welcome ${user.name}!`, "Login Successful!", "success");
         }
         this.$store.dispatch("login", { token, user, fully_onboarded });
         this.loading = false;
       } catch (error) {
+<<<<<<< HEAD
         var error_msg = error.response.data.data;
         Swal.fire(`Error`, error_msg, "warning");
+=======
+        Swal.fire("Error", "Password or Email Not Correct!", "warning");
+        console.log(error);
+>>>>>>> afd46f6b5cd44fa24aa4e8424d3ea11b946ddcfa
         this.email = "";
         this.password = "";
         this.loading = false;
