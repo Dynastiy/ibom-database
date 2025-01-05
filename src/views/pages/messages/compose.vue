@@ -123,7 +123,6 @@
 <script>
 import helpers from "@/helpers/index.js";
 import Swal from 'sweetalert2'
-import Swal from "sweetalert2";
 // import VueTagsInput from '@johmun/vue-tags-input';
 
 export default {
