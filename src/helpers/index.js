@@ -110,15 +110,4 @@ export default {
         const response = await axios.post(`${url}tasks/${id}/forward`)
         return response.data.data
     },
-=======
-
-    // async deleteDepartment(id) {
-    //     const response = await axios.post(`${url}admin/departments/${id}`)
-    //     return response.data.data
-    // },
-    // async updateDepartment(updateDeparmentInfo) {
-    //     const response = await axios.post(`${url}admin/departments/${id}`, updateDeparmentInfo)
-    //     return response.data.data
-    // }
->>>>>>> afd46f6b5cd44fa24aa4e8424d3ea11b946ddcfa
 };
