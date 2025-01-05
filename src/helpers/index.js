@@ -77,7 +77,6 @@ export default {
         const response = await axios.get(url + 'tasks')
         return response.data.data
     },
-<<<<<<< HEAD
     async getTasksById(id) {
         const response = await axios.get(`${url}tasks/${id}`)
         return response.data.data
