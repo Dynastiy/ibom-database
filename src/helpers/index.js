@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-const url = 'https://ibomdemo.africanapp.store/api/v1/';
+const url = 'https://testapi.ndloo.com/api';
 
 export default {
     async login(credentials) {
         const response = await axios
-            .post(url + 'auth/login/', credentials);
+            .post(url + '/login', credentials);
         return response.data.data;
     },
 
